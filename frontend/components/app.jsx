@@ -1,12 +1,15 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import HeaderNav from 'session/header_nav';
 import SignupFormContainer from 'users/signup_form_container';
 import LoginFormContainer from 'session/login_form_container';
 
-const App = (props) => (
+const App = ({ store }) => (
   <div>
     <h1>Yak!</h1>
-    <SignupFormContainer />
-    <LoginFormContainer />
+    <HeaderNav />
+    <Route path='/login' component={LoginFormContainer} />
+    <Route path='/signup' component={SignupFormContainer} />
   </div>
 );
 

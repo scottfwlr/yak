@@ -3,7 +3,8 @@ import CredentialsForm from 'session/credentials_form';
 import { signUp } from 'actions/user_actions';
 
 const mapStateToProps = (state) => ({
-  errors: state.errors
+  errors: state.errors,
+  formType: 'Sign up'
 });
 
 const mapDispatchToProps = (dispatch) => ({

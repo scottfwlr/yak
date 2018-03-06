@@ -19,6 +19,10 @@ class CredentialsForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitCredentials(this.state);
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   render() {
@@ -27,6 +31,7 @@ class CredentialsForm extends React.Component {
       <form
         className='credentials-form'
         onSubmit={ this.handleSubmit }>
+        <h2>{ this.props.formType }</h2>
         <label>Email
           <input
             type='text'
