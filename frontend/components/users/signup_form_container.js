@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import CredentialsForm from 'session/credentials_form';
-import { logIn } from 'actions/session_actions';
+import { signUp } from 'actions/user_actions';
 
 const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitCredentials: (credentials) => dispatch(logIn(credentials)),
-
+  submitCredentials: (credentials) => dispatch(signUp(credentials))
 });
 
 
