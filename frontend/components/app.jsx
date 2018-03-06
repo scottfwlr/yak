@@ -5,7 +5,7 @@ import SignupFormContainer from 'users/signup_form_container';
 import LoginFormContainer from 'session/login_form_container';
 
 const App = ({ store }) => (
-  <div>
+  <div id='app'>
     <h1>Yak!</h1>
     <HeaderNav />
     <Route path='/login' component={LoginFormContainer} />
