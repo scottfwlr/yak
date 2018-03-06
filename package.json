@@ -22,7 +22,13 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
+    "webpack": "webpack --watch"
+  },
+  "engines": {
+    "node": "6.7.0",
+    "npm": "3.10.7"
   },
   "repository": {
     "type": "git",
