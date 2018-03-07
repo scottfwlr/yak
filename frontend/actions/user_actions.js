@@ -1,5 +1,5 @@
 import * as UserUtils from 'util/user_api_util';
-import { receiveError } from 'actions/error_actions';
+import { receiveError, clearErrors } from 'actions/error_actions';
 import { receiveCurrentUser } from 'actions/session_actions';
 
 export const requestUser = (id) => (dispatch) => (
@@ -13,6 +13,7 @@ export const signUp = (user) => (dispatch) => (
     (payload) => {
       dispatch(receiveUser(payload));
       dispatch(receiveCurrentUser(payload));
+      dispatch(clearErrors());
     },
     (err) => dispatch(receiveError(err.responseJSON))
   )
