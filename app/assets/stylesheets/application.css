@@ -10,10 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require reset.css
+ *= require defaults.css
  *= require credentials.css
  *= require_tree .
  *= require_self
  */
+
 
 #root {
   width: 100vw;
@@ -23,4 +26,14 @@
 #app {
   width: 100%;
   height: 100%;
+  background-color: whitesmoke;
+}
+
+
+.nav-header {
+  background-color: white;
+  height: 50px;
+  display: block;
+  /* position: fixed; */
+  border-bottom: 1px solid lightgray;
 }

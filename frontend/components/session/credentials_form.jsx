@@ -28,28 +28,28 @@ class CredentialsForm extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <form
-        className='credentials-form'
+      <form className='credentials-form'
         onSubmit={ this.handleSubmit }>
-        <h2>{ this.props.formType }</h2>
-        <label>Email
-          <input
+        <div className='credentials-form-container'>
+          <h2 className='credentials-form-headline'>{ `${this.props.formType} to Yak` }</h2>
+          <p className='credentials-form-p'>Enter your <b>email address</b> and <b>password</b>.</p>
+          <input className='credentials-form-input input-email'
             type='text'
+            placeholder='you@example.com'
             value={ email }
             onChange={ this.updateField('email') }
             />
-        </label>
-        <label>Password
-          <input
+          <input className='credentials-form-input input-password'
             type='password'
+            placeholder='password'
             value={ password }
             onChange={ this.updateField('password') }
             />
-        </label>
-        <input
-          type='submit'
-          value='Submit'
-          />
+          <input className='credentials-form-input credentials-form-submit'
+            type='submit'
+            value={ this.props.formType }
+            />
+        </div>
       </form>
     );
   }

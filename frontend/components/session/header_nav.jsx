@@ -5,11 +5,11 @@ import { logOut } from 'actions/session_actions';
 
 const HeaderNav = ({ loggedIn, logOut }) => {
   return loggedIn ? (
-    <header>
+    <header className='nav-header'>
       <button onClick={ logOut }>Log out</button>
     </header>
   ) : (
-    <header>
+    <header className='nav-header'>
       <Link to='/signup'>Sign up</Link>
       &nbsp; or &nbsp;
       <Link to='/login'>Log in</Link>
