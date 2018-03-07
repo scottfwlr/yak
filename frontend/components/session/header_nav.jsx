@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut } from 'actions/session_actions';
 
-const HeaderNav = ({ currentUser, logOut }) => {
-  return currentUser ? (
+const HeaderNav = ({ loggedIn, logOut }) => {
+  return loggedIn ? (
     <header>
       <button onClick={ logOut }>Log out</button>
     </header>
@@ -18,7 +18,7 @@ const HeaderNav = ({ currentUser, logOut }) => {
 };
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  loggedIn: Boolean(state.session.currentUser)
 });
 
 const mapDispatchToProps = dispatch => ({

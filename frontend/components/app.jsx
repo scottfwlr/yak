@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { AuthRoute } from 'util/route_util';
 import HeaderNav from 'session/header_nav';
 import SignupFormContainer from 'users/signup_form_container';
 import LoginFormContainer from 'session/login_form_container';
@@ -8,8 +8,8 @@ const App = ({ store }) => (
   <div id='app'>
     <h1>Yak!</h1>
     <HeaderNav />
-    <Route path='/login' component={LoginFormContainer} />
-    <Route path='/signup' component={SignupFormContainer} />
+    <AuthRoute path='/login' exact  component={ LoginFormContainer } />
+    <AuthRoute path='/signup' exact component={ SignupFormContainer } />
   </div>
 );
 
