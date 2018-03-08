@@ -7,10 +7,9 @@ const HeaderNav = ({ loggedIn, logOut }) => {
   return loggedIn ? (
       <button onClick={ logOut }>Log out</button>
   ) : (
-    <div>
-      <Link to='/signup'>Sign up</Link>
-      &nbsp; or &nbsp;
-      <Link to='/login'>Log in</Link>
+    <div className='session-header-nav'>
+      <Link className='session-header-nav-link' to='/signup'>Sign up</Link>
+      <Link className='session-header-nav-link' to='/login'>Log in</Link>
     </div>
   );
 };

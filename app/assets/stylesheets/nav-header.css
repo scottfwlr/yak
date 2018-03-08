@@ -2,13 +2,49 @@
   background-color: white;
   height: 70px;
   width: 100%;
-  /* margin: 5px; */
   display: block;
   position: fixed;
-  /* border-bottom: 1px solid lightgray; */
   box-shadow: 0px 0px 1px 1px lightgray;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.session-header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}
+
+.session-header-nav-link {
+  font-size: 15px;
+  color: darkgray;
+  padding: 7px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.session-header-nav-link:hover {
+  background-color: gainsboro;
+  color: dimgray;
+}
+
+.session-header-nav-link:last-child {
+  margin-right: 50px;
+  background-color: transparent;
+  border: 2px solid darkgray;
+}
+
+.session-header-nav-link:last-child:hover {
+  border-color: dimgray;
+}
+
+.logo-link {
+  font-family: 'Itim', cursive;
+  margin-left: 50px;
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 6px;
 }

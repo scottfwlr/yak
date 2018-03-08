@@ -1,14 +1,12 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from 'util/route_util';
-import HeaderNav from 'session/header_nav';
+import Header from 'header';
 import SignupFormContainer from 'users/signup_form_container';
 import LoginFormContainer from 'session/login_form_container';
 
 const App = ({ store }) => (
   <div id='app'>
-    <header className='nav-header'>
-      <HeaderNav />
-    </header>
+    <Header className='header-nav' />
     <main>
       <ProtectedRoute path='/' exact  component={ 'div' } />
       <AuthRoute path='/login' exact  component={ LoginFormContainer } />
