@@ -17,3 +17,9 @@ main {
   padding-top: 70px;
   background-color: whitesmoke;
 }
+
+.fake-link {
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+}

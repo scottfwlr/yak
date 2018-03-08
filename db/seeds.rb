@@ -9,9 +9,9 @@
 User.destroy_all
 
 User.create([
-  {email: 'vader@deathstar', password: 'starwars'},
-  {email: 'palpatine@deathstar', password: 'starwars'},
-  {email: 'han@falcon', password: 'starwars'},
-  {email: 'leia@hoth', password: 'starwars'},
-  {email: 'luke@dagobah', password: 'starwars'}
+  {email: 'vader@deathstar.gov', password: 'starwars'},
+  {email: 'palpatine@deathstar.gov', password: 'starwars'},
+  {email: 'han@falcon.io', password: 'starwars'},
+  {email: 'leia@hoth.com', password: 'starwars'},
+  {email: 'luke@dagobah.edu', password: 'starwars'}
 ])

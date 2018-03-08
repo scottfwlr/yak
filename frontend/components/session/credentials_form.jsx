@@ -10,6 +10,11 @@ class CredentialsForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.getDemoUser = this.getDemoUser.bind(this);
+  }
+
+  componentDidMount () {
+    this.props.clearErrors();
   }
 
   updateField(field) {
@@ -25,12 +30,24 @@ class CredentialsForm extends React.Component {
     });
   }
 
+  getDemoUser() {
+    const demoUsers = [
+      'vader@deathstar.gov',
+      'palpatine@deathstar.gov',
+      'han@falcon.io',
+      'leia@hoth.com',
+      'luke@dagobah.edu'
+    ];
+    const email = demoUsers[Math.floor(Math.random()*demoUsers.length)];
+    this.setState({ email, password: 'starwars' });
+  }
+
+
   render() {
     const { email, password } = this.state;
     return (
       <form className='credentials-box credentials-form'
         onSubmit={ this.handleSubmit }>
-        {/* <div className='credentials-form-container'> */}
           <h2 className='credentials-form-headline'>{ `${this.props.formType} to Yak` }</h2>
           <p className='credentials-form-p'>Enter your <b>email address</b> and <b>password</b>.</p>
           <input className='credentials-form-input input-email'
@@ -49,7 +66,17 @@ class CredentialsForm extends React.Component {
             type='submit'
             value={ this.props.formType }
             />
-          {/* </div> */}
+
+          {
+            this.props.formType === 'Log in' ? (
+              <p className='fake-link'
+                onClick={ this.getDemoUser }>
+                Use a demo account
+              </p>
+            ) : (
+              null
+            )
+          }
       </form>
     );
   }
