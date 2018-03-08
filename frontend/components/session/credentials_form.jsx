@@ -11,6 +11,7 @@ class CredentialsForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateField = this.updateField.bind(this);
     this.getDemoUser = this.getDemoUser.bind(this);
+    this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
   componentDidMount () {
@@ -42,6 +43,10 @@ class CredentialsForm extends React.Component {
     this.setState({ email, password: 'starwars' });
   }
 
+  handleDemoClick() {
+    this.props.clearErrors();
+    this.getDemoUser();
+  }
 
   render() {
     const { email, password } = this.state;
@@ -70,7 +75,7 @@ class CredentialsForm extends React.Component {
           {
             this.props.formType === 'Log in' ? (
               <p className='fake-link'
-                onClick={ this.getDemoUser }>
+                onClick={ this.handleDemoClick }>
                 Use a demo account
               </p>
             ) : (
