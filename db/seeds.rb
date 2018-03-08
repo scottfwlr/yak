@@ -15,3 +15,22 @@ User.create([
   {email: 'leia@hoth.com', password: 'starwars'},
   {email: 'luke@dagobah.edu', password: 'starwars'}
 ])
+
+luke = User.find_by(email: 'luke@dagobah.edu')
+leia = User.find_by(email: 'leia@hoth.com')
+han = User.find_by(email: 'han@falcon.io')
+palpatine = User.find_by(email: 'palpatine@deathstar.gov')
+vader = User.find_by(email: 'vader@deathstar.gov')
+
+Message.destroy_all
+
+Message.create([
+  {author: luke, text: "May the force be with you"},
+  {author: han, text: "She may look like a hunk of junk, but she's fast where it counts."},
+  {author: leia, text: "You... scruffy-looking nerf herder!"},
+  {author: palpatine, text: "Witness the power of this fully-operational battle station!"},
+  {author: vader, text: "Luke, I am your father"},
+  {author: luke, text: "Nooooo!"}
+])
+
+# TODO: create messages at different timestamps to test message ordering
