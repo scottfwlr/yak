@@ -1,4 +1,4 @@
-export const fetchMessages() => (
+export const fetchMessages = () => (
   $.ajax({
     url: '/api/messages'
   })

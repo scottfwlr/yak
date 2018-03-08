@@ -2,13 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from 'store/store';
 import Root from 'components/root';
+import { requestMessages } from 'actions/message_actions';
 
 // TESTING
-// import { createUser, fetchUser } from 'util/user_api_util';
-// import { createSession, destroySession } from 'util/session_api_util';
-//
-// import { logIn, logOut } from 'actions/session_actions';
-// import { signUp, requestUser } from 'actions/user_actions';
+window.requestMessages = requestMessages;
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -19,18 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore(preloadedState);
 
   // TESTING
-  // window.createUser = createUser;
-  // window.fetchUser = fetchUser;
-  // window.createSession = createSession;
-  // window.destroySession = destroySession;
-
-  // window.logIn = logIn;
-  // window.logOut = logOut;
-  // window.signUp = signUp;
-  // window.requestUser = requestUser;
-  //
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
 
   ReactDOM.render(<Root store={store} />, root);
 });
