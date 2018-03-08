@@ -30,7 +30,7 @@ class CredentialsForm extends React.Component {
     return (
       <form className='credentials-form'
         onSubmit={ this.handleSubmit }>
-        <div className='credentials-form-container'>
+        {/* <div className='credentials-form-container'> */}
           <h2 className='credentials-form-headline'>{ `${this.props.formType} to Yak` }</h2>
           <p className='credentials-form-p'>Enter your <b>email address</b> and <b>password</b>.</p>
           <input className='credentials-form-input input-email'
@@ -49,7 +49,7 @@ class CredentialsForm extends React.Component {
             type='submit'
             value={ this.props.formType }
             />
-        </div>
+          {/* </div> */}
       </form>
     );
   }

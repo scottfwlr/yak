@@ -1,3 +1,19 @@
-html { 
-  font-family: sans-serif;
+html {
+  font-family: -apple-system, "SF", BlinkMacSystemFont, sans-serif;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+main {
+  padding-top: 70px;
+  background-color: whitesmoke;
 }
