@@ -28,7 +28,7 @@ class CredentialsForm extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <form className='credentials-form'
+      <form className='credentials-box credentials-form'
         onSubmit={ this.handleSubmit }>
         {/* <div className='credentials-form-container'> */}
           <h2 className='credentials-form-headline'>{ `${this.props.formType} to Yak` }</h2>
