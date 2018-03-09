@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
+import ChatBox from 'chat/chatbox';
 
 class MainChat extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class MainChat extends React.Component {
             <p key={ message.id }>{ message.text } (by { message.email })</p>
           ))
         }
+        <ChatBox />
       </main>
     );
   }
