@@ -33,6 +33,8 @@ class MainChat extends React.Component {
   render() {
     const chat = Object.values(this.props.messages)
 
+
+    // BAD
     chat.forEach(message => {
       message.author = this.props.users[message.author_id]
     });
