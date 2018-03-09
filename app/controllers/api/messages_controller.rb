@@ -5,4 +5,6 @@ class Api::MessagesController < ApplicationController
     @messages = Message.all
   end
 
+  # create ?
+
 end

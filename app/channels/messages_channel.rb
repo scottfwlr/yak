@@ -12,9 +12,12 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def message_from(data)
+    # move this!
     message = Message.new(text: data['text'], author: current_user)
     if message.save
-      ApplicationController.render(partial: 'api/messages/message', locals: {message: message})
+      ApplicationController.render(
+        partial: 'api/messages/message',
+        locals: {message: message})
     end
   end
 end
