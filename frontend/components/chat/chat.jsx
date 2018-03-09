@@ -30,17 +30,21 @@ class MainChat extends React.Component {
   }
 
   render() {
-    debugger
     const chat = Object.values(this.props.messages)
+
     chat.forEach(message => {
       message.author = this.props.users[message.author_id]
+    });
+
+    chat.forEach(message => {
+      message.email = message.author ? message.author.email : 'loading...'
     });
 
     return (
       <main>
         {
           chat.map(message => (
-            <p>{ `${message.text} (by ${message.author.email})` }</p>
+            <p key={ message.id }>{ message.text } (by { message.email })</p>
           ))
         }
       </main>
