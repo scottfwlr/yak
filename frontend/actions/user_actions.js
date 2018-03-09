@@ -8,6 +8,12 @@ export const requestUser = (id) => (dispatch) => (
   )
 );
 
+export const requestUsers = () => (dispatch) => (
+  UserUtils.fetchUsers().then(
+    (payload) => dispatch(receiveUsers(payload))
+  )
+);
+
 export const signUp = (user) => (dispatch) => (
   UserUtils.createUser(user).then(
     (payload) => {
@@ -24,4 +30,10 @@ export const receiveUser = (user) => ({
   user
 });
 
+export const receiveUsers = (users) => ({
+  type: RECEIVE_USERS,
+  users
+});
+
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';

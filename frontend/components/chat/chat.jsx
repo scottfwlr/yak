@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveMessage } from 'actions/message_actions';
+import { receiveMessage, requestMessages } from 'actions/message_actions';
+import { requestUsers } from 'actions/user_actions';
 
 class MainChat extends React.Component {
   constructor(props) {
@@ -9,6 +10,12 @@ class MainChat extends React.Component {
   }
 
   componentWillMount() {
+    // TESTING
+    this.props.requestUsers();
+    this.props.requestMessages();
+
+
+    // ActionCable initialisation
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       connected: () => console.log('we connected'),
       disconnected: () => console.log('we disconnected'),
@@ -16,32 +23,40 @@ class MainChat extends React.Component {
         console.log('we received');
         console.log(data);
       },
-      speak: function(text) { return this.perform('speak', { text }) }
+      speak: function(text) {
+        return this.perform('speak', { text });
+      }
     });
-    debugger
   }
 
   render() {
-
+    debugger
+    const chat = Object.values(this.props.messages)
+    chat.forEach(message => {
+      message.author = this.props.users[message.author_id]
+    });
 
     return (
       <main>
-        
-
-
-
+        {
+          chat.map(message => (
+            <p>{ `${message.text} (by ${message.author.email})` }</p>
+          ))
+        }
       </main>
     );
   }
 }
 
 
-const mapStateToProps = state => ({
-
+const mapStateToProps = ({ entities: { users, messages } }) => ({
+  users,
+  messages
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  requestUsers: () => dispatch(requestUsers()),
+  requestMessages: () => dispatch(requestMessages())
 });
 
 export default connect(
