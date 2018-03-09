@@ -12,6 +12,7 @@ const App = ({ store }) => {
     </div>
   ) : (
     <div id='app'>
+      <ProtectedRoute path='/' exact component= { SessionForm } />
       <SessionForm />
     </div>
   );

@@ -13,6 +13,6 @@ const SessionForm = () => (
     <AuthRoute path='/login' exact  component={ LoginFormContainer } />
     <AuthRoute path='/signup' exact component={ SignupFormContainer } />
   </main>
-)
+);
 
 export default SessionForm;
