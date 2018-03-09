@@ -4,6 +4,9 @@ import { receiveMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
 import ChatBox from 'chat/chatbox';
 
+// temporary
+import Header from 'header';
+
 class MainChat extends React.Component {
   constructor(props) {
     super(props);
@@ -40,6 +43,7 @@ class MainChat extends React.Component {
 
     return (
       <main>
+        <Header />
         {
           chat.map(message => (
             <p key={ message.id }>{ message.text } (by { message.email })</p>
