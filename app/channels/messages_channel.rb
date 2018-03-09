@@ -7,7 +7,7 @@ class MessagesChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def index
+  def speak
   end
 end
 

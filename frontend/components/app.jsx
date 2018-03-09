@@ -1,21 +1,15 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Header from 'header';
-import { AuthRoute, ProtectedRoute } from 'util/route_util';
-import SignupFormContainer from 'users/signup_form_container';
-import LoginFormContainer from 'session/login_form_container';
-import CredentialsFormError from 'session/credentials_form_error';
+import { Switch, withRouter } from 'react-router-dom';
+import { ProtectedRoute } from 'util/route_util';
+import MainChat from 'chat/chat';
+import SessionForm from 'session/session_form';
 
 const App = ({ store }) => (
   <div id='app'>
-    <Header className='header-nav' />
-    <main>
-      <ProtectedRoute path='/' exact  component={ 'div' } />
-      <CredentialsFormError />
-      <AuthRoute path='/login' exact  component={ LoginFormContainer } />
-      <AuthRoute path='/signup' exact component={ SignupFormContainer } />
-    </main>
+    <ProtectedRoute path='/' exact  component={ MainChat } />
+    <SessionForm />
   </div>
 );
 
 export default withRouter(App);
+
