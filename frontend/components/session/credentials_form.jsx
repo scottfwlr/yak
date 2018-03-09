@@ -59,18 +59,18 @@ class CredentialsForm extends React.Component {
             type='text'
             placeholder='you@example.com'
             value={ email }
-            onChange={ this.updateField('email') }
-            />
+            onChange={ this.updateField('email') } />
+
           <input className='credentials-form-input input-password'
             type='password'
             placeholder='password'
             value={ password }
-            onChange={ this.updateField('password') }
-            />
+            onChange={ this.updateField('password') } />
+
           <input className='credentials-form-input credentials-form-submit'
             type='submit'
-            value={ this.props.formType }
-            />
+            value={ this.props.formType } />
+          
 
           {
             this.props.formType === 'Log in' ? (

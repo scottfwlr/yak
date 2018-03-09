@@ -33,9 +33,8 @@ export default class ChatBox extends React.Component {
       <input
         type='text'
         value={ this.state.text }
-        onChange={ this.updateText }
-
-        />
+        onChange={ this.updateText }/>
+      
       <input type='submit' value='Send'/>
       </form>
     );
