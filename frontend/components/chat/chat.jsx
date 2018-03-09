@@ -19,10 +19,7 @@ class MainChat extends React.Component {
     App.messages = App.cable.subscriptions.create('MessagesChannel', {
       connected: () => console.log('we connected'),
       disconnected: () => console.log('we disconnected'),
-      received: (data) => {
-        console.log('we received');
-        console.log(data);
-      },
+      received: (message) => this.props.receiveMessage(JSON.parse(message)),
       speak: function(text) {
         return this.perform('speak', { text });
       }
@@ -60,7 +57,8 @@ const mapStateToProps = ({ entities: { users, messages } }) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestUsers: () => dispatch(requestUsers()),
-  requestMessages: () => dispatch(requestMessages())
+  requestMessages: () => dispatch(requestMessages()),
+  receiveMessage: (message) => dispatch(receiveMessage(message))
 });
 
 export default connect(
