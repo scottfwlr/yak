@@ -15,9 +15,10 @@ class ChatWindow extends React.Component {
   render() {
     return this.props.messageRuns.map(messageArray => {
       const [firstMessage, ...messages] = messageArray;
+      const nullUser = {profilePicUrl: '', fullName: '', displayName: 'loading...'}
       return (
         <MessagesBox
-          author={ this.props.users[firstMessage.authorId] }
+          author={ this.props.users[firstMessage.authorId] || nullUser }
           firstMessage={ firstMessage }
           messages={ messages }
           key={ firstMessage.id }
