@@ -13,14 +13,20 @@ class MessagesChannel < ApplicationCable::Channel
   def new_message(data)
     message = Message.new(message_from(data))
     if message.save
-      broadcast('receiveMessage', message)
+      broadcast_message('receiveMessage', message)
+    else
+      broadcast_error(message.errors.full_messages)
     end
   end
 
   def edit_message(data)
     message = lookup_message(data['id'])
     if message && message.update(text: data['text'])
-      broadcast('receiveMessage', message)
+      broadcast_message('receiveMessage', message)
+    elsif message
+      broadcast_error(message.errors.full_messages)
+    else
+      broadcast_error("You can only edit your own messages.")
     end
   end
 
@@ -28,7 +34,9 @@ class MessagesChannel < ApplicationCable::Channel
     message = lookup_message(data['id'])
     if message
       message.destroy!
-      broadcast('deleteMessage', message)
+      broadcast_message('deleteMessage', message)
+    else
+      broadcast_error("You can only edit your own messages.")
     end
   end
 
@@ -47,16 +55,25 @@ class MessagesChannel < ApplicationCable::Channel
     message if message.author == current_user
   end
 
-  def broadcast(action, message)
-    ActionCable.server.broadcast(current_room,
-      ApplicationController.render(
-        partial: 'api/messages/action_message',
-        locals: {
-          action: action,
-          message: message
-        }
-      )
+  def broadcast(data)
+    ActionCable.server.broadcast(current_room, data)
+  end
+
+  def broadcast_message(action, message)
+    broadcast ApplicationController.render(
+      partial: 'api/messages/action_message',
+      locals: {
+        action: action,
+        message: message
+      }
     )
+  end
+
+  def broadcast_error(error)
+    broadcast ApplicationController.render(json: {
+      action: 'receiveError',
+      message: [error]
+      })
   end
 
 end

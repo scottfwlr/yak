@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveMessage, deleteMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
+import { receiveError } from 'actions/error_actions';
 import ChatBox from 'chat/chatbox';
 import ChatWindow from 'chat/chat_window';
 import subscribeTo from 'util/action_cable_util';
@@ -42,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
   requestUsers: () => dispatch(requestUsers()),
   requestMessages: () => dispatch(requestMessages()),
   receiveMessage: (message) => dispatch(receiveMessage(message)),
-  deleteMessage: (message) => dispatch(deleteMessage(message))
+  deleteMessage: (message) => dispatch(deleteMessage(message)),
+  receiveError: (message) => dispatch(receiveError(message))
 });
 
 export default connect(

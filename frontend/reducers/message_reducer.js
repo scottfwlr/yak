@@ -6,7 +6,6 @@ const messageReducer = (state = {}, action) => {
   switch(action.type) {
     case DELETE_MESSAGE:
       const newState = merge({}, state);
-      debugger
       delete newState[action.id];
       return newState;
     case RECEIVE_MESSAGE:

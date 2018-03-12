@@ -13,3 +13,5 @@ export const messageRunsSelector = (messageData) => {
   }
   return runs;
 };
+
+export const idFromMessage = (message) => Object.keys(message)[0];

@@ -1,4 +1,5 @@
 import * as MessageApiUtil from 'util/message_api_util';
+import { idFromMessage } from 'reducers/selectors';
 
 
 export const requestMessages = () => (dispatch) => (
@@ -19,7 +20,7 @@ export const receiveMessage = (message) => ({
 });
 
 export const deleteMessage = (message) => {
-  const id = Object.keys(message)[0];
+  const id = idFromMessage(message);
   return {
     type: DELETE_MESSAGE,
     id

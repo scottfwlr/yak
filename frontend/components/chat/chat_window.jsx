@@ -35,7 +35,7 @@ const mapStateToProps = ({ entities: { messages, users } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  editMessage: (id) => (text) => { App.messages.editMessage(id, text) },
+  editMessage: (id) => (_text) => { App.messages.editMessage(id, text) },
   deleteMessage: (id) => () => { App.messages.deleteMessage(id) }
 });
 

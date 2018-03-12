@@ -1,5 +1,7 @@
 import React from 'react';
 
+// editMessage will be a lot of work
+
 export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
   <div className='chat-message first-message'>
     <div className='chat-message-aside-left'>
