@@ -12,7 +12,7 @@ export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
   <div className='chat-message first-message'>
     <div className='chat-message-aside-left'>
       <img className='profile-pic chat-message-profile-pic'
-        src={ author.profilePicUrl }
+        src={ window.profilePicLookup[author.profilePicUrl] }
         alt={ author.fullName }/>
     </div>
     <div className='chat-message-content-right'>
