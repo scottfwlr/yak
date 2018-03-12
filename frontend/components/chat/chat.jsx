@@ -27,6 +27,7 @@ class MainChat extends React.Component {
       received: (message) => this.props.receiveMessage(JSON.parse(message)),
       speak: function(text) {
         return this.perform('speak', { text });
+        // get params for channel id
       }
     });
   }

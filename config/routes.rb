@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
 
   get '/', to: 'static_pages#root'
+  mount ActionCable.server, at: '/cable'
 end
