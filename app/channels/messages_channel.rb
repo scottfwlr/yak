@@ -31,7 +31,7 @@ class MessagesChannel < ApplicationCable::Channel
       broadcast('deleteMessage', message)
     end
   end
-  
+
   private
 
   def current_room

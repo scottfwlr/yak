@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FirstMessage = ({ author, message }) => (
+export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
   <div className='chat-message first-message'>
     <div className='chat-message-aside-left'>
       <img className='profile-pic chat-message-profile-pic'
@@ -16,16 +16,36 @@ export const FirstMessage = ({ author, message }) => (
         <p className='chat-message-text'>{ message.text }</p>
       </div>
     </div>
+    <div className='chat-message-actions'>
+      <p className='fake-link'
+        onClick={ editMe(message.id) }>
+        edit
+      </p>
+      <p className='fake-link'
+        onClick={ deleteMe(message.id) }>
+        delete
+      </p>
+    </div>
   </div>
 );
 
-export const Message = ({ message }) => (
+export const Message = ({ message, editMe, deleteMe }) => (
   <div className='chat-message'>
     <div className='chat-message-aside-left'>
       <a className='chat-message-timestamp'>{ message.createdAt }</a>
     </div>
     <div className='chat-message-content-right'>
       <p className='chat-message-text'>{ message.text }</p>
+    </div>
+    <div className='chat-message-actions'>
+      <p className='fake-link'
+        onClick={ editMe(message.id) }>
+        edit
+      </p>
+      <p className='fake-link'
+        onClick={ deleteMe(message.id) }>
+        delete
+      </p>
     </div>
   </div>
 );

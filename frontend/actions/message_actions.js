@@ -18,10 +18,14 @@ export const receiveMessage = (message) => ({
   message
 });
 
-export const deleteMessage = ({ id }) => ({
-  type: DELETE_MESSAGE,
-  id
-});
+export const deleteMessage = (message) => {
+  const id = Object.keys(message)[0];
+  return {
+    type: DELETE_MESSAGE,
+    id
+  };
+};
 
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
