@@ -32,6 +32,7 @@ Message.create([
   {author: vader, text: "Luke, I am your father"},
   {author: luke, text: "Nooooo!"},
   {author: luke, text: "Your overconfidence is your weakness."},
-  {author: luke, text: "*is repeatedly struck by lightning*"}
+  {author: luke, text: "*is repeatedly struck by lightning*"},
+  {author: han, text: "Where did you dig up this old fossil?"}
 
 ])
