@@ -1,33 +1,62 @@
 class MessagesChannel < ApplicationCable::Channel
 
   def subscribed
-    stream_from "main"
+    stream_from current_room
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  end
+  # data['action']
+  # data['text'] etc
+  # params[:room]
+
+  def new_message(data)
+    message = Message.new(message_from(data))
+    if message.save
+      broadcast('receiveMessage', message)
+    end
   end
 
-  def speak(data)
-    # check if authorised
-    # ...
-
-    # check if message saved
-    if message = message_from(data)
-      ActionCable.server.broadcast('main', message)
-    else
-      #
+  def edit_message(data)
+    message = lookup_message(data['id'])
+    if message && message.update(text: data['text'])
+      broadcast('receiveMessage', message)
     end
+  end
+
+  def delete_message(data)
+    message = lookup_message(data['id'])
+    if message
+      message.destroy!
+      broadcast('deleteMessage', message)
+    end
+  end
+  
+  private
+
+  def current_room
+    params[:room].to_s
   end
 
   def message_from(data)
-    message = Message.new(text: data['text'], author: current_user)
-    if message.save
-      ApplicationController.render(
-        partial: 'api/messages/message',
-        locals: {message: message})
-    else
-      false
-    end
+    {text: data['text'], author: current_user}
   end
+
+  def lookup_message(id)
+    message = Message.find(id)
+    message if message.author == current_user
+  end
+
+  def broadcast(action, message)
+    ActionCable.server.broadcast(current_room,
+      ApplicationController.render(
+        partial: 'api/messages/action_message',
+        locals: {
+          action: action,
+          message: message
+        }
+      )
+    )
+  end
+
 end

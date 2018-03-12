@@ -6,19 +6,22 @@ export const requestMessages = () => (dispatch) => (
     (payload) => dispatch(receiveMessages(payload)),
     (err) => dispatch(receiveErrors(err.responseJSON))
   )
-)
+);
 
 export const receiveMessages = (messages) => ({
   type: RECEIVE_MESSAGES,
   messages
 });
 
-export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
-
-
 export const receiveMessage = (message) => ({
   type: RECEIVE_MESSAGE,
   message
 });
 
+export const deleteMessage = ({ id }) => ({
+  type: DELETE_MESSAGE,
+  id
+});
+
+export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';

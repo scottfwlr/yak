@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveMessage, requestMessages } from 'actions/message_actions';
+import { receiveMessage, deleteMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
 import ChatBox from 'chat/chatbox';
 import ChatWindow from 'chat/chat_window';
+import subscribeTo from 'util/action_cable_util';
 
 // temporary
 import Header from 'header';
@@ -11,7 +12,6 @@ import Header from 'header';
 class MainChat extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentWillMount() {
@@ -19,45 +19,33 @@ class MainChat extends React.Component {
     this.props.requestUsers();
     this.props.requestMessages();
 
-
     // ActionCable initialisation
-    App.messages = App.cable.subscriptions.create('MessagesChannel', {
-      connected: () => console.log('we connected'),
-      disconnected: () => console.log('we disconnected'),
-      received: (message) => this.props.receiveMessage(JSON.parse(message)),
-      speak: function(text) {
-        return this.perform('speak', { text });
-        // get params for channel id
-      }
-    });
+    App.messages = subscribeTo('MessagesChannel', 'main');
+    App.messages.received = (data) => {
+      const { action, message } = JSON.parse(data);
+      this.props[action](message);
+    };
   }
 
   render() {
-    const chat = Object.values(this.props.messages)
-
     return (
       <main>
         <Header />
-          <ChatWindow />
+        <ChatWindow />
         <ChatBox />
       </main>
     );
   }
 }
 
-
-const mapStateToProps = ({ entities: { users, messages } }) => ({
-  users,
-  messages
-});
-
 const mapDispatchToProps = dispatch => ({
   requestUsers: () => dispatch(requestUsers()),
   requestMessages: () => dispatch(requestMessages()),
-  receiveMessage: (message) => dispatch(receiveMessage(message))
+  receiveMessage: (message) => dispatch(receiveMessage(message)),
+  deleteMessage: (message) => dispatch(deleteMessage(message))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(MainChat);

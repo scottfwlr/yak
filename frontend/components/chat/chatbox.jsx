@@ -21,7 +21,7 @@ export default class ChatBox extends React.Component {
 
   sendMessage() {
     if (this.state.text.length) {
-      App.messages.speak(this.state.text);
+      App.messages.newMessage(this.state.text);
     }
     this.setState({ text: '' });
 
@@ -34,7 +34,7 @@ export default class ChatBox extends React.Component {
         type='text'
         value={ this.state.text }
         onChange={ this.updateText }/>
-      
+
       <input type='submit' value='Send'/>
       </form>
     );
