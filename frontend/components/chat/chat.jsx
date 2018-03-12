@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
+import { createApp } from 'util/action_cable_util';
 import ChatBox from 'chat/chatbox';
 
 // temporary
