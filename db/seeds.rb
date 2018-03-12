@@ -9,11 +9,11 @@
 User.destroy_all
 
 User.create([
-  {email: 'vader@deathstar.gov', password: 'starwars'},
-  {email: 'palpatine@deathstar.gov', password: 'starwars'},
-  {email: 'han@falcon.io', password: 'starwars'},
-  {email: 'leia@hoth.com', password: 'starwars'},
-  {email: 'luke@dagobah.edu', password: 'starwars'}
+  {email: 'vader@deathstar.gov', password: 'starwars', full_name: 'Darth Vader', display_name: 'Vader', description: "Anakin Skywalker was a Force-sensitive Human male who served the Galactic Republic as a Jedi Knight and later served the Galactic Empire as the Sith Lord Darth Vader.", profile_pic_url: '/assets/vader.png'},
+  {email: 'palpatine@deathstar.gov', password: 'starwars', full_name: 'Emperor Palpatine', display_name: 'Palpatine', description: "Palpatine, also known as Darth Sidious, was a Force-sensitive Human male who served as the last Supreme Chancellor of the Galactic Republic and the first Emperor of the Galactic Empire.", profile_pic_url: '/assets/palpatine.png'},
+  {email: 'han@falcon.io', password: 'starwars', full_name: 'Han Solo', display_name: 'Han', description: "Han Solo was a male Human smuggler from the planet Corellia who achieved galactic fame as a member of the Rebel Alliance and later the New Republic.", profile_pic_url: '/assets/han.png'},
+  {email: 'leia@hoth.com', password: 'starwars', full_name: 'Leia Organa Solo', display_name: 'Leia', description: "Leia Organa (born Leia Amidala Skywalker) was a Force-sensitive human female who served as princess of Alderaan, a member of the Imperial Senate, a general in the Alliance to Restore the Republic and New Republic, and the founding general of the Resistance.", profile_pic_url: '/assets/leia.png'},
+  {email: 'luke@dagobah.edu', password: 'starwars', full_name: 'Luke Skywalker', display_name: 'Luke', description: "Luke Skywalker was a Force-sensitive human male Jedi Master who was instrumental in restoring balance to the Force, defeating the Sith and the Galactic Empire, and inspiring a legend that brought a spark of hope to the galaxy in the fight to defeat the First Order.", profile_pic_url: '/assets/luke.png'}
 ])
 
 luke = User.find_by(email: 'luke@dagobah.edu')
@@ -34,5 +34,4 @@ Message.create([
   {author: luke, text: "Your overconfidence is your weakness."},
   {author: luke, text: "*is repeatedly struck by lightning*"},
   {author: han, text: "Where did you dig up this old fossil?"}
-
 ])
