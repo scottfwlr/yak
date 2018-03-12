@@ -12,11 +12,12 @@ class MessagesChannel < ApplicationCable::Channel
     # check if authorised
     # ...
 
-    # check if message saved 
+    # check if message saved
     if message = message_from(data)
       ActionCable.server.broadcast('main', message)
     else
-
+      #
+    end
   end
 
   def message_from(data)

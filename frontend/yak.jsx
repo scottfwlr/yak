@@ -2,12 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from 'store/store';
 import Root from 'components/root';
-import { requestMessages } from 'actions/message_actions';
-import { requestUsers } from 'actions/user_actions';
+import { messageRunsSelector } from 'reducers/selectors';
+
+// import { requestMessages } from 'actions/message_actions';
+// import { requestUsers } from 'actions/user_actions';
+
 
 // TESTING
 // window.requestMessages = requestMessages;
 // window.requestUsers = requestUsers;
+// window.messageRunsSelector = messageRunsSelector;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');

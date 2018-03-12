@@ -30,7 +30,8 @@ Message.create([
   {author: leia, text: "You... scruffy-looking nerf herder!"},
   {author: palpatine, text: "Witness the power of this fully-operational battle station!"},
   {author: vader, text: "Luke, I am your father"},
-  {author: luke, text: "Nooooo!"}
-])
+  {author: luke, text: "Nooooo!"},
+  {author: luke, text: "Your overconfidence is your weakness."},
+  {author: luke, text: "*is repeatedly struck by lightning*"}
 
-# TODO: create messages at different timestamps to test message ordering
+])

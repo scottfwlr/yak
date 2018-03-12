@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
-import { createApp } from 'util/action_cable_util';
 import ChatBox from 'chat/chatbox';
+import ChatWindow from 'chat/chat_window';
 
 // temporary
 import Header from 'header';
@@ -34,24 +34,10 @@ class MainChat extends React.Component {
   render() {
     const chat = Object.values(this.props.messages)
 
-
-    // BAD
-    chat.forEach(message => {
-      message.author = this.props.users[message.author_id]
-    });
-
-    chat.forEach(message => {
-      message.email = message.author ? message.author.email : 'loading...'
-    });
-
     return (
       <main>
         <Header />
-        {
-          chat.map(message => (
-            <p key={ message.id }>{ message.text } (by { message.email })</p>
-          ))
-        }
+          <ChatWindow />
         <ChatBox />
       </main>
     );

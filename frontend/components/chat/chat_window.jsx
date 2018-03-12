@@ -7,21 +7,23 @@ import { messageRunsSelector } from 'reducers/selectors';
 
 class ChatWindow extends React.Component {
 
-  constructor() {
+  constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      this.props.messageRuns.map([firstMessage, ...messages]) => (
-        <MessagesBox 
-          firstMessage={ firstMessage } 
-          messages={ messages } 
-          key={ firstMessage.id }/>
-      ))
-    );
+    return this.props.messageRuns.map(messageArray => {
+      const [firstMessage, ...messages] = messageArray;
+      return (
+        <MessagesBox
+          author={ this.props.users[firstMessage.authorId] }
+          firstMessage={ firstMessage }
+          messages={ messages }
+          key={ firstMessage.id }
+        />
+      );
+    });
   }
-
 }
 
 const mapStateToProps = ({ entities: { messages, users } }) => ({

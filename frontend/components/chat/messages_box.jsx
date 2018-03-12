@@ -7,9 +7,9 @@ const MessagesBox = ({ author, firstMessage, messages }) => (
       author={ author }
       message={ firstMessage } />
     {
-      messages.map(message => (
+      messages && messages.length ? messages.map(message => (
         <Message message={ message } key={ message.id }/>
-      ))
+      )) : null
     }
   </div>
 )
