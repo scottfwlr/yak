@@ -6,17 +6,16 @@ export default class ChatBox extends React.Component {
     super(props);
     this.state = { text: '' };
     this.updateText = this.updateText.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.handleKeypress = this.handleKeypress.bind(this);
+  }
+
+  handleKeypress(e) {
+    if (e.key === 'Enter') this.sendMessage();
   }
 
   updateText(e) {
     this.setState({ text: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.sendMessage();
   }
 
   sendMessage() {
@@ -24,19 +23,17 @@ export default class ChatBox extends React.Component {
       App.messages.newMessage(this.state.text);
     }
     this.setState({ text: '' });
-
   }
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
-      <input
+      <input className='chat-box'
         type='text'
         value={ this.state.text }
-        onChange={ this.updateText }/>
-
-      <input type='submit' value='Send'/>
-      </form>
+        placeholder='Type message here'
+        onKeyUp={ this.handleKeypress }
+        onChange={ this.updateText }
+        />
     );
   }
 

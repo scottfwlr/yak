@@ -17,6 +17,7 @@
  *
  *= require nav-header
  *= require credentials
+ *= require message
  *= require_tree .
  *= require_self
  */
