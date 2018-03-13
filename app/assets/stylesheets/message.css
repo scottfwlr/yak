@@ -59,6 +59,7 @@
 
 .chat-message-text {
   padding-left: 10px;
+  white-space: pre-wrap;
 }
 
 .chat-message-actions {
@@ -135,4 +136,9 @@
 
 .chat-box::placeholder {
   color: silver;
+}
+
+.chat-box-uncontrolled {
+  max-height: 200px;
+  overflow-y: scroll;
 }

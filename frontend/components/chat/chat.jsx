@@ -5,9 +5,7 @@ import { receiveMessage, deleteMessage, requestMessages } from 'actions/message_
 import { requestUsers } from 'actions/user_actions';
 import { receiveError } from 'actions/error_actions';
 import ChatWindow from 'chat/chat_window';
-
-// import ChatBox from 'chat/chatbox_input';
-import ChatBox from 'chat/chatbox_textarea';
+import ChatBox from 'chat/chatbox';
 
 
 // temporary
