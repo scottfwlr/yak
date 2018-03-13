@@ -19,3 +19,4 @@ bundle.js.map
 npm-debug.log
 .DS_Store
 .byebug_history
+/public/assets
