@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import subscribeTo from 'util/action_cable_util';
 import { receiveMessage, deleteMessage, requestMessages } from 'actions/message_actions';
 import { requestUsers } from 'actions/user_actions';
 import { receiveError } from 'actions/error_actions';
-import ChatBox from 'chat/chatbox';
 import ChatWindow from 'chat/chat_window';
-import subscribeTo from 'util/action_cable_util';
+
+// import ChatBox from 'chat/chatbox_input';
+import ChatBox from 'chat/chatbox_textarea';
+
 
 // temporary
 import Header from 'header';

@@ -27,13 +27,13 @@ export default class ChatBox extends React.Component {
 
   render() {
     return (
-      <input className='chat-box'
-        type='text'
-        value={ this.state.text }
+      <textarea className='chat-box-text-input'
         placeholder='Type message here'
         onKeyUp={ this.handleKeypress }
-        onChange={ this.updateText }
-        />
+        onChange={ this.updateText }>
+        { this.state.text }
+        </textarea>
+
     );
   }
 

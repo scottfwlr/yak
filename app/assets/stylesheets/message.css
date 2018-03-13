@@ -11,6 +11,8 @@
 }
 
 .chat-message-aside-left {
+  max-width: 50px;
+  min-width: 50px;
   width: 50px;
   display: flex;
   justify-content: center;
@@ -102,9 +104,10 @@
 .date-divider-text {
   position: absolute;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 10px;  
   top: -50%;
   left: 50%;
+  transform: translateX(-50%);
   background-color: rgb(249,249,249);
   font-size: 12px;
   color: dimgray;
@@ -116,8 +119,8 @@
   display: none;
 }
 
-
-.chat-box {
+.chat-box-text-area,
+.chat-box-text-input {
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -125,6 +128,9 @@
   padding: 10px;
   border: 2px solid dimgray;
   border-radius: 8px;
+  resize: none;
+  background-color: rgb(249,249,249);
+  outline: none;
 }
 
 .chat-box::placeholder {

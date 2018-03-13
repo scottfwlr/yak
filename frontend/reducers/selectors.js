@@ -20,7 +20,7 @@ export const messageRuns = (messages) => {
 
 const dayOfMessage = (message) => {
   const date = new Date(message.createdAt*1000);
-  return date.toDateString();
+  return date.toDateString().slice(0,-5);
 }
 
 export const messagesByDates = (messageData) => {
