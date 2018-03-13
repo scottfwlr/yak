@@ -15,14 +15,12 @@ export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
         src={ window.profilePicLookup[author.profilePicUrl] }
         alt={ author.fullName }/>
     </div>
-    <div className='chat-message-content-right'>
-      <div className='first-message-content-right'>
+    <div className='chat-message-content-right first-message-content-right'>
         <span className='chat-message-byline'>
           <p className='chat-message-author-name'>{ author.displayName }</p>
           <a className='chat-message-timestamp'>{ timestampify(message.createdAt) }</a>
         </span>
         <p className='chat-message-text'>{ message.text }</p>
-      </div>
     </div>
     <div className='chat-message-actions'>
       <p className='fake-link'
