@@ -106,13 +106,15 @@
   top: -50%;
   left: 50%;
   background-color: rgb(249,249,249);
+  font-size: 12px;
+  color: dimgray;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 .chat-day-container:first-child .date-divider {
   display: none;
 }
-
-
 
 
 .chat-box {
@@ -121,6 +123,8 @@
   width: 100%;
   font-size: 16px;
   padding: 10px;
+  border: 2px solid dimgray;
+  border-radius: 8px;
 }
 
 .chat-box::placeholder {
