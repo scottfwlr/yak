@@ -24,14 +24,35 @@ vader = User.find_by(email: 'vader@deathstar.gov')
 
 Message.destroy_all
 
-Message.create([
-  {author: luke, text: "May the force be with you"},
+
+messages = [
+  {author: luke, text: "May the force be with you."},
+  {author: vader, text: "I have altered the deal. Pray I do not alter it further."},
+  {author: han, text: "It's the ship that made the Kessel Run in less than twelve parsecs."},
   {author: han, text: "She may look like a hunk of junk, but she's fast where it counts."},
-  {author: leia, text: "You... scruffy-looking nerf herder!"},
+  {author: vader, text: "I find your lack of faith disturbing."},
+  {author: palpatine, text: "It is of no concern. Soon the rebellion will be crushed and young Skywalker will be one of us."},
   {author: palpatine, text: "Witness the power of this fully-operational battle station!"},
-  {author: vader, text: "Luke, I am your father"},
+  {author: leia, text: "You... scruffy-looking nerf herder!"},
+  {author: han, text: "Well, Your Worship, looks like you managed to keep me around for a little while longer."},
+  {author: leia, text: "Aren't you a little short for a stormtrooper?"},
+  {author: han, text: "Hokey religions and ancient weapons are no match for a good blaster at your side, kid."},
+  {author: han, text: "Where did you dig up this old fossil?"},
+  {author: luke, text: "You killed my father!"},
+  {author: vader, text: "No Luke, I am your father."},
   {author: luke, text: "Nooooo!"},
   {author: luke, text: "Your overconfidence is your weakness."},
-  {author: luke, text: "*is repeatedly struck by lightning*"},
-  {author: han, text: "Where did you dig up this old fossil?"}
-])
+  {author: luke, text: "*is repeatedly struck by lightning*"}
+]
+
+times = messages.map { rand(1..10000) }.sort.reverse
+
+messages.zip(times).each do |message, seconds|
+  m = Message.new(message)
+  m.created_at = Time.now - seconds
+  m.save
+end
+
+m = Message.new({author: leia, text: "Help me Obi-wan Kenobi, you're my only hope."})
+m.created_at = Time.now - 65000
+m.save

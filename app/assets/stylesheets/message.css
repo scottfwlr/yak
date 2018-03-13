@@ -1,3 +1,8 @@
+.chat-window {
+  background-color: rgb(249,249,249);
+  margin-bottom: 40px;
+}
+
 
 .chat-message {
   display: flex;
@@ -36,10 +41,11 @@
   font-size: 12px;
   color: transparent;
   vertical-align: bottom;
+  font-weight: lighter;
 }
 
 .chat-message:hover {
-  background-color: lightgray;
+  background-color: whitesmoke;
 }
 
 .chat-message:hover .chat-message-timestamp {
@@ -82,9 +88,6 @@
 
 }
 
-.chat-messages-box:last-of-type {
-  margin-bottom: 40px;
-}
 
 .chat-box {
   position: fixed;
@@ -92,4 +95,8 @@
   width: 100%;
   font-size: 16px;
   padding: 10px;
+}
+
+.chat-box::placeholder {
+  color: silver;
 }

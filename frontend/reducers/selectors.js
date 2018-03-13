@@ -1,7 +1,10 @@
-// select all author_ids that aren't defined yet?
+
+const sortMessagesByCreation = (messages) => {
+  return messages.sort((mA, mB) => mA.createdAt - mB.createdAt);
+};
 
 export const messageRunsSelector = (messageData) => {
-  const messages = Object.values(messageData);
+  const messages = sortMessagesByCreation(Object.values(messageData));
   const runs = [];
   for (var i = 0; i < messages.length; i++) {
     const newRun = [messages[i]];
@@ -14,4 +17,6 @@ export const messageRunsSelector = (messageData) => {
   return runs;
 };
 
-export const idFromMessage = (message) => Object.keys(message)[0];
+export const idFromMessage = (messageData) => Object.keys(messageData)[0];
+
+export const messageFromMessageData = (messageData) => Object.values(messageData)[0];
