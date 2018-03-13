@@ -3,7 +3,6 @@
   margin-bottom: 40px;
 }
 
-
 .chat-message {
   display: flex;
   flex-flow: row nowrap;
@@ -87,6 +86,33 @@
 .first-message {
 
 }
+
+
+.date-divider {
+  position: relative;
+}
+
+.date-divider-rule {
+  border: none;
+  border-top: 1px solid lightgray;
+  margin-top: 16px;
+  padding-bottom: 16px;
+}
+
+.date-divider-text {
+  position: absolute;
+  padding-left: 10px;
+  padding-right: 10px;
+  top: -50%;
+  left: 50%;
+  background-color: rgb(249,249,249);
+}
+
+.chat-day-container:first-child .date-divider {
+  display: none;
+}
+
+
 
 
 .chat-box {

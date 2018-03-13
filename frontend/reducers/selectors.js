@@ -1,10 +1,11 @@
+import { groupBy } from 'lodash';
+
 
 const sortMessagesByCreation = (messages) => {
   return messages.sort((mA, mB) => mA.createdAt - mB.createdAt);
 };
 
-export const messageRunsSelector = (messageData) => {
-  const messages = sortMessagesByCreation(Object.values(messageData));
+export const messageRuns = (messages) => {
   const runs = [];
   for (var i = 0; i < messages.length; i++) {
     const newRun = [messages[i]];
@@ -16,6 +17,31 @@ export const messageRunsSelector = (messageData) => {
   }
   return runs;
 };
+
+const dayOfMessage = (message) => {
+  const date = new Date(message.createdAt*1000);
+  return date.toDateString();
+}
+
+export const messagesByDates = (messageData) => {
+  const messages = sortMessagesByCreation(Object.values(messageData));
+  const groupedMessages = groupBy(messages, dayOfMessage);
+  return Object.keys(groupedMessages).map(date => ({
+    date,
+    messageArray: groupedMessages[date]
+  }));
+
+  // return Object.keys(groupedMessages).map(dateKey => ({
+  //   dateKey,
+  //   messageArray: messageRuns(groupedMessages[dateKey])
+  // }));
+}
+
+export const messageRunsSelector = (messageData) => {
+  const messages = sortMessagesByCreation(Object.values(messageData));
+  return messageRuns(messages);
+}
+
 
 export const idFromMessage = (messageData) => Object.keys(messageData)[0];
 

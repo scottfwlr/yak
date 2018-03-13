@@ -1,7 +1,7 @@
 import React from 'react';
-import MessagesBox from 'chat/messages_box';
+import ChatDay from 'chat/chat_day';
 import { connect } from 'react-redux';
-import { messageRunsSelector } from 'reducers/selectors';
+import { messagesByDates } from 'reducers/selectors';
 import { editMessage, deleteMessage } from 'actions/message_actions';
 
 
@@ -13,41 +13,31 @@ class ChatWindow extends React.Component {
   }
 
   render() {
-    const chatWindow = this.props.messageRuns.map(messageArray => {
-      const [firstMessage, ...messages] = messageArray;
-      const nullUser = {profilePicUrl: '', fullName: '', displayName: 'loading...'}
+    const chatWindow = this.props.messagesByDates.map(day => {
+      const { date, messageArray } = day;
       return (
-        <MessagesBox
-          author={ this.props.users[firstMessage.authorId] || nullUser }
-          firstMessage={ firstMessage }
-          messages={ messages }
-          key={ firstMessage.id }
-          deleteMessage={ this.props.deleteMessage }
-          editMessage={ this.props.editMessage }
+        <ChatDay 
+          date={ date } 
+          allMessagesArray={ messageArray } 
+          key={ date }
         />
       );
     });
-
     return (
       <div className='chat-window'>
-        { chatWindow} 
+        { chatWindow }
       </div>
     );
   }
+
 }
 
-const mapStateToProps = ({ entities: { messages, users } }) => ({
-  messageRuns: messageRunsSelector(messages),
-  users
-});
-
-const mapDispatchToProps = dispatch => ({
-  editMessage: (id) => (_text) => { App.messages.editMessage(id, text) },
-  deleteMessage: (id) => () => { App.messages.deleteMessage(id) }
+const mapStateToProps = ({ entities: { messages } }) => ({
+  messagesByDates: messagesByDates(messages)
 });
 
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(ChatWindow);
