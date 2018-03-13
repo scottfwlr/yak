@@ -8,6 +8,9 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Message
 
+  has_many :channel_memberships
+  has_many :channels, through: :channel_memberships
+
   after_initialize :ensure_session_token
 
 

@@ -22,27 +22,48 @@ han = User.find_by(email: 'han@falcon.io')
 palpatine = User.find_by(email: 'palpatine@deathstar.gov')
 vader = User.find_by(email: 'vader@deathstar.gov')
 
+
+
+Channel.destroy_all
+
+Channel.create([
+  {name: 'general', topic: 'Rebels rule, Imperials drool', purpose: "This channel is a general-purpose conference room. If you want to start a conversation and this room is already active, try #general2"},
+  {name: "cloud_city", topic: "Lando is a traitor", purpose: "Goings-on and events in Lando Calrissian's Cloud City on Bespin. UNDER NEW MANAGEMENT"},
+  {name: "cantina", topic: "*loud cantina music*", purpose: "A wretched hive of scum and villainy."},
+  {name: "boardroom", topic: "Days since last Force-choking incident: 0", purpose: "Imperial generals holding strategy meetings with Vader and Palpatine."},
+  {name: 'trench_run', topic: "Yeehaw!", purpose: "For crazy suicide assaults on Imperial targets."}
+])
+
+general = Channel.find_by(name: 'general')
+cloud_city = Channel.find_by(name: 'cloud_city')
+cantina = Channel.find_by(name: 'cantina')
+boardroom = Channel.find_by(name: 'boardroom')
+trench_run = Channel.find_by(name: 'trench_run')
+
+
+
+
 Message.destroy_all
 
-
 messages = [
-  {author: luke, text: "May the force be with you."},
-  {author: vader, text: "I have altered the deal. Pray I do not alter it further."},
-  {author: han, text: "It's the ship that made the Kessel Run in less than twelve parsecs."},
-  {author: han, text: "She may look like a hunk of junk, but she's fast where it counts."},
-  {author: vader, text: "I find your lack of faith disturbing."},
-  {author: palpatine, text: "It is of no concern. Soon the rebellion will be crushed and young Skywalker will be one of us."},
-  {author: palpatine, text: "Witness the power of this fully-operational battle station!"},
-  {author: leia, text: "You... scruffy-looking nerf herder!"},
-  {author: han, text: "Well, Your Worship, looks like you managed to keep me around for a little while longer."},
-  {author: leia, text: "Aren't you a little short for a stormtrooper?"},
-  {author: han, text: "Hokey religions and ancient weapons are no match for a good blaster at your side, kid."},
-  {author: han, text: "Where did you dig up this old fossil?"},
-  {author: luke, text: "You killed my father!"},
-  {author: vader, text: "No Luke, I am your father."},
-  {author: luke, text: "Nooooo!"},
-  {author: luke, text: "Your overconfidence is your weakness."},
-  {author: luke, text: "*is repeatedly struck by lightning*"}
+  {author: luke, channel: general, text: "May the force be with you."},
+  {author: vader, channel: cloud_city, text: "I have altered the deal. Pray I do not alter it further."},
+  {author: han, channel: cantina, text: "It's the ship that made the Kessel Run in less than twelve parsecs."},
+  {author: han, channel: cantina, text: "She may look like a hunk of junk, but she's fast where it counts."},
+  {author: vader, channel: boardroom, text: "I find your lack of faith disturbing."},
+  {author: palpatine, channel: boardroom, text: "It is of no concern. Soon the rebellion will be crushed and young Skywalker will be one of us."},
+  {author: palpatine, channel: boardroom, text: "Witness the power of this fully-operational battle station!"},
+  {author: leia, channel: general, text: "You... scruffy-looking nerf herder!"},
+  {author: han, channel: general, text: "Well, Your Worship, looks like you managed to keep me around for a little while longer."},
+  {author: leia, channel: trench_run, text: "Aren't you a little short for a stormtrooper?"},
+  {author: han, channel: trench_run, text: "Hokey religions and ancient weapons are no match for a good blaster at your side, kid."},
+  {author: han, channel: trench_run, text: "Where did you dig up this old fossil?"},
+  {author: luke, channel: cloud_city, text: "You killed my father!"},
+  {author: vader, channel: cloud_city, text: "No Luke, I am your father."},
+  {author: luke, channel: cloud_city, text: "Nooooo!"},
+  {author: luke, channel: boardroom, text: "Your overconfidence is your weakness."},
+  {author: palpatine, channel: boardroom, text: "Your faith in your friends is yours."},
+  {author: luke, channel: boardroom, text: "*is repeatedly struck by lightning*"}
 ]
 
 times = messages.map { rand(1..10000) }.sort.reverse
@@ -53,6 +74,10 @@ messages.zip(times).each do |message, seconds|
   m.save
 end
 
-m = Message.new({author: leia, text: "Help me Obi-wan Kenobi, you're my only hope."})
+m = Message.new({author: leia, channel: general, text: "Help me Obi-wan Kenobi, you're my only hope."})
 m.created_at = Time.now - 65000
 m.save
+
+[luke, leia, han, vader, palpatine].each do |character|
+  character.channels = character.messages.map(&:channel).uniq
+end
