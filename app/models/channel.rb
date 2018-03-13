@@ -5,6 +5,8 @@ class Channel < ApplicationRecord
   has_many :messages
 
   has_many :channel_memberships
-  has_many :users, through: :channel_memberships
+  has_many :members, 
+    through: :channel_memberships,
+    source: :user
 
 end
