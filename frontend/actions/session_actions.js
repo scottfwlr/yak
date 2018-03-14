@@ -1,5 +1,5 @@
 import * as SessionUtils from 'util/session_api_util';
-import { receiveError, clearErrors } from 'actions/error_actions';
+import { receiveErrors, clearErrors } from 'actions/error_actions';
 
 export const logIn = (params) => (dispatch) => (
   SessionUtils.createSession(params).then(
@@ -7,18 +7,19 @@ export const logIn = (params) => (dispatch) => (
       dispatch(receiveCurrentUser(payload));
       dispatch(clearErrors());
     },
-    (err) => dispatch(receiveError(err.responseJSON))
+    (err) => dispatch(receiveErrors(err.responseJSON))
   )
 );
 
 export const logOut = () => (dispatch) => (
   SessionUtils.destroySession().then(
     () => {
+      App.unsubscribeAll();
       App.cable.disconnect();
       dispatch(removeCurrentUser());
       dispatch(clearErrors());
     },
-    (err) => dispatch(receiveError(err.responseJSON))
+    (err) => dispatch(receiveErrors(err.responseJSON))
   )
 );
 

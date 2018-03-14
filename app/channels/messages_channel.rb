@@ -13,8 +13,8 @@ class MessagesChannel < ApplicationCable::Channel
       broadcast type: 'RECEIVE_MESSAGE', 
         message: partial('api/messages/message', message: message)
     else
-      broadcast type: 'RECEIVE_ERROR',
-        error: message.errors.full_messages
+      broadcast type: 'RECEIVE_ERRORS',
+        errors: message.errors.full_messages
     end
   end
 
@@ -24,11 +24,11 @@ class MessagesChannel < ApplicationCable::Channel
       broadcast type: 'RECEIVE_MESSAGE',
         message: partial('api/messages/message', message: message)
     elsif message
-      broadcast type: 'RECEIVE_ERROR',
-        error: message.errors.full_messages
+      broadcast type: 'RECEIVE_ERRORS',
+        errors: message.errors.full_messages
     else
-      broadcast type: 'RECEIVE_ERROR',
-        error: ["You can only edit your own messages."]
+      broadcast type: 'RECEIVE_ERRORS',
+        errors: ["You can only edit your own messages."]
     end
   end
 
@@ -39,8 +39,8 @@ class MessagesChannel < ApplicationCable::Channel
       broadcast type: 'DELETE_MESSAGE',
         id: message.id
     else
-      broadcast type: 'RECEIVE_ERROR',
-        error: ["You can only delete your own messages."]
+      broadcast type: 'RECEIVE_ERRORS',
+        errors: ["You can only delete your own messages."]
     end
   end
 
