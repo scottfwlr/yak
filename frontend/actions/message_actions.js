@@ -20,13 +20,10 @@ export const receiveMessage = (message) => ({
   message
 });
 
-export const deleteMessage = (message) => {
-  const id = idFromMessage(message);
-  return {
+export const deleteMessage = (id) => ({
     type: DELETE_MESSAGE,
     id
-  };
-};
+});
 
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';

@@ -1,32 +1,34 @@
 class MessagesChannel < ApplicationCable::Channel
 
   def subscribed
-    stream_from current_room
+    stream_from current_channel.name
   end
 
   def unsubscribed
   end
-  # data['action']
-  # data['text'] etc
-  # params[:room]
-
+  
   def new_message(data)
-    message = Message.new(message_from(data))
+    message = message_from(data)
     if message.save
-      broadcast_message('receiveMessage', message)
+      broadcast type: 'RECEIVE_MESSAGE', 
+        message: partial('api/messages/message', message: message)
     else
-      broadcast_error(message.errors.full_messages)
+      broadcast type: 'RECEIVE_ERROR',
+        error: message.errors.full_messages
     end
   end
 
   def edit_message(data)
     message = lookup_message(data['id'])
     if message && message.update(text: data['text'])
-      broadcast_message('receiveMessage', message)
+      broadcast type: 'RECEIVE_MESSAGE',
+        message: partial('api/messages/message', message: message)
     elsif message
-      broadcast_error(message.errors.full_messages)
+      broadcast type: 'RECEIVE_ERROR',
+        error: message.errors.full_messages
     else
-      broadcast_error("You can only edit your own messages.")
+      broadcast type: 'RECEIVE_ERROR',
+        error: ["You can only edit your own messages."]
     end
   end
 
@@ -34,46 +36,36 @@ class MessagesChannel < ApplicationCable::Channel
     message = lookup_message(data['id'])
     if message
       message.destroy!
-      broadcast_message('deleteMessage', message)
+      broadcast type: 'DELETE_MESSAGE',
+        id: message.id
     else
-      broadcast_error("You can only edit your own messages.")
+      broadcast type: 'RECEIVE_ERROR',
+        error: ["You can only delete your own messages."]
     end
   end
 
   private
 
-  def current_room
-    params[:room].to_s
+  def current_channel
+    Channel.find_by(name: params[:room])
   end
 
   def message_from(data)
-    {text: data['text'], author: current_user}
+    Message.new(text: data['text'], author: current_user, channel: current_channel)
   end
 
   def lookup_message(id)
-    message = Message.find(id)
+    message = Message.find_by(id: id)
     message if message.author == current_user
   end
 
   def broadcast(data)
-    ActionCable.server.broadcast(current_room, data)
+    ActionCable.server.broadcast(current_channel.name, 
+      ApplicationController.render(json: data))
   end
 
-  def broadcast_message(action, message)
-    broadcast ApplicationController.render(
-      partial: 'api/messages/action_message',
-      locals: {
-        action: action,
-        message: message
-      }
-    )
-  end
-
-  def broadcast_error(error)
-    broadcast ApplicationController.render(json: {
-      action: 'receiveError',
-      message: [error]
-      })
+  def partial(partial, locals)
+    JSON.parse ApplicationController.render(partial: partial, locals: locals)
   end
 
 end

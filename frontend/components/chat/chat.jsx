@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import subscribeTo from 'util/action_cable_util';
+import subscriber from 'util/action_cable_util';
 
 import { requestUsers } from 'actions/user_actions';
 import { requestChannels } from 'actions/channel_actions';
@@ -17,20 +17,13 @@ import Header from 'header';
 class MainChat extends React.Component {
   constructor(props) {
     super(props);
+    App.subscribeTo = subscriber(props.dispatch, 'MessagesChannel');
   }
 
   componentWillMount() {
-    // TESTING
-    // this.props.requestUsers();
-    // this.props.requestMessages();
-    this.props.requestChannels();
-
+    this.props.dispatch(requestChannels());
     // ActionCable initialisation
-    App.messages = subscribeTo('MessagesChannel', 'main');
-    App.messages.received = (data) => {
-      const { action, message } = JSON.parse(data);
-      this.props[action](message);
-    };
+    App.messages = App.subscribeTo('general');
   }
 
   render() {
@@ -44,16 +37,14 @@ class MainChat extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  requestUsers: () => dispatch(requestUsers()),
-  requestMessages: () => dispatch(requestMessages()),
-  requestChannels: () => dispatch(requestChannels()),
-  receiveMessage: (message) => dispatch(receiveMessage(message)),
-  deleteMessage: (message) => dispatch(deleteMessage(message)),
-  receiveError: (message) => dispatch(receiveError(message))
-});
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(MainChat);
+// const mapDispatchToProps = dispatch => ({
+//   requestUsers: () => dispatch(requestUsers()),
+//   requestMessages: () => dispatch(requestMessages()),
+//   requestChannels: () => dispatch(requestChannels()),
+//   receiveMessage: (message) => dispatch(receiveMessage(message)),
+//   deleteMessage: (message) => dispatch(deleteMessage(message)),
+//   receiveError: (message) => dispatch(receiveError(message))
+// });
+
+export default connect()(MainChat);

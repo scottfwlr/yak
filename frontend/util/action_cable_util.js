@@ -1,8 +1,8 @@
-const subscribeTo = (channel, room) => {
+const subscriber = (dispatch, channel) => (room) => {
   return App.cable.subscriptions.create({ channel, room }, {
     connected: () => console.log('we connected'),
     disconnected: () => console.log('we disconnected'),
-    // received: () => { define in component for proper bindings }
+    received: data => dispatch(JSON.parse(data)),
     newMessage: function(text) {
       return this.perform('new_message', { text });
     },
@@ -15,4 +15,4 @@ const subscribeTo = (channel, room) => {
   });
 };
 
-export default subscribeTo;
+export default subscriber;
