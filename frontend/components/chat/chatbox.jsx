@@ -1,17 +1,17 @@
 import React from 'react';
 
-const handleKeyDown = (e) => {
+const handleKeyDown = (channel) => (e) => {
   if (e.key === 'Enter' && !e.getModifierState('Shift')) {
     e.preventDefault();
-    // App.messages.newMessage(e.target.innerText);
-    App.channels['general'].newMessage(e.target.innerText);
+    App.channels[channel].newMessage(e.target.innerText);
     e.target.innerText = "";
   }
 }
 
-const ChatBox = () => (
-  <div contentEditable className='chat-box-text-area chat-box-uncontrolled'
-    onKeyDown={ handleKeyDown }>
+const ChatBox = ({ channel }) => (
+  <div className='chat-box-text-area chat-box-uncontrolled'
+    contentEditable
+    onKeyDown={ handleKeyDown(channel) }>
   </div> 
 );
 

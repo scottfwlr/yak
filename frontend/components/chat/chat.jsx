@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import createCableSubscriber from 'util/action_cable_util';
 
-
 import ChatWindow from 'chat/chat_window';
 import ChatBox from 'chat/chatbox';
 
@@ -19,7 +18,7 @@ const MainChat = ({ dispatch }) => {
     <main>
       <Header />
       <ChatWindow />
-      <ChatBox />
+      <ChatBox channel='general' />
     </main>
   );
 };
