@@ -2,8 +2,6 @@ import React from 'react';
 
 // editMessage will be a lot of work
 
-
-
 export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
   <div className='chat-message first-message'>
     <div className='chat-message-aside-left'>
@@ -19,12 +17,12 @@ export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
         <p className='chat-message-text'>{ message.text }</p>
     </div>
     <div className='chat-message-actions'>
-      <p className='fake-link'
-        onClick={ editMe(message.id) }>
+{/*      <p className='fake-link'
+        onClick={ editMe }>
         edit
-      </p>
+      </p>*/}
       <p className='fake-link'
-        onClick={ deleteMe(message.id) }>
+        onClick={ deleteMe }>
         delete
       </p>
     </div>
@@ -40,12 +38,12 @@ export const Message = ({ message, editMe, deleteMe }) => (
       <p className='chat-message-text'>{ message.text }</p>
     </div>
     <div className='chat-message-actions'>
-      <p className='fake-link'
-        onClick={ editMe(message.id) }>
+{/*      <p className='fake-link'
+        onClick={ editMe }>
         edit
-      </p>
+      </p>*/}
       <p className='fake-link'
-        onClick={ deleteMe(message.id) }>
+        onClick={ deleteMe }>
         delete
       </p>
     </div>

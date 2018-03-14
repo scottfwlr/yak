@@ -30,11 +30,6 @@ export const messagesByDates = (messageData) => {
     date,
     messageArray: groupedMessages[date]
   }));
-
-  // return Object.keys(groupedMessages).map(dateKey => ({
-  //   dateKey,
-  //   messageArray: messageRuns(groupedMessages[dateKey])
-  // }));
 }
 
 export const messageRunsSelector = (messageData) => {

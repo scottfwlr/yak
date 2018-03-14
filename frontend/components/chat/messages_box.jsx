@@ -1,24 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { FirstMessage, Message } from 'chat/message';
 
-const MessagesBox = ({ author, firstMessage, messages, editMessage, deleteMessage }) => (
+const MessagesBox = ({  users, firstMessage, messages, deleteMessage }) => (
   <div className='chat-messages-box'>
     <FirstMessage
-      author={ author }
+      author={ users[firstMessage.authorId] || {} }
       message={ firstMessage }
-      editMe={ editMessage }
-      deleteMe={ deleteMessage }
+      deleteMe={ deleteMessage(firstMessage.id) }
       />
     {
       messages && messages.length ? messages.map(message => (
         <Message message={ message }
           key={ message.id }
-          editMe={ editMessage }
-          deleteMe={ deleteMessage }
+          deleteMe={ deleteMessage(message.id) }
           />
       )) : null
     }
   </div>
 )
 
-export default MessagesBox;
+const mapStateToProps = state => ({
+  users: state.entities.users
+})
+
+export default connect(mapStateToProps)(MessagesBox);

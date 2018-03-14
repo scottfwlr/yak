@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import createCableSubscriber from 'util/action_cable_util';
+import createChannelSubscriber from 'util/action_cable_util';
 
 import ChatWindow from 'chat/chat_window';
 import ChatBox from 'chat/chatbox';
@@ -11,7 +11,7 @@ import { requestChannels } from 'actions/channel_actions';
 import Header from 'header';
 
 const MainChat = ({ dispatch }) => {
-  createCableSubscriber(dispatch, 'MessagesChannel');
+  createChannelSubscriber(dispatch, 'MessagesChannel');
   App.subscribeTo('general');
   dispatch(requestChannels());
   return (

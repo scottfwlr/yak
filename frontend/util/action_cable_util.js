@@ -1,4 +1,4 @@
-const createCableSubscriber = (dispatch, channel) => {
+const createChannelSubscriber = (dispatch, channel) => {
   App.channels = {};
 
   App.subscribeTo = (room) => {
@@ -27,4 +27,4 @@ const createCableSubscriber = (dispatch, channel) => {
   }
 };
 
-export default createCableSubscriber;
+export default createChannelSubscriber;
