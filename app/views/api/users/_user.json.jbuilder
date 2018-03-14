@@ -7,3 +7,4 @@ json.set! user.id do
   json.profilePicUrl user.profile_pic_url
   json.description user.description
 end
+ 

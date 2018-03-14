@@ -2,17 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from 'store/store';
 import Root from 'components/root';
-import { messageRunsSelector } from 'reducers/selectors';
 
+
+
+// TESTING
+// import { messageRunsSelector } from 'reducers/selectors';
 // import { requestMessages } from 'actions/message_actions';
 // import { requestUsers } from 'actions/user_actions';
+// import { requestChannel, requestChannels } from 'actions/channel_actions';
 
 
 // TESTING
 // window.requestMessages = requestMessages;
 // window.requestUsers = requestUsers;
 // window.messageRunsSelector = messageRunsSelector;
-
+// window.requestChannels = requestChannels;
+// window.requestChannel = requestChannel;
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
