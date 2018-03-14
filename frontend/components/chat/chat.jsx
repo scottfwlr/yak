@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import subscriber from 'util/action_cable_util';
 
-import { requestUsers } from 'actions/user_actions';
 import { requestChannels } from 'actions/channel_actions';
-import { requestMessages, receiveMessage, deleteMessage } from 'actions/message_actions';
-import { receiveError } from 'actions/error_actions';
 
 import ChatWindow from 'chat/chat_window';
 import ChatBox from 'chat/chatbox';
@@ -37,14 +34,5 @@ class MainChat extends React.Component {
   }
 }
 
-
-// const mapDispatchToProps = dispatch => ({
-//   requestUsers: () => dispatch(requestUsers()),
-//   requestMessages: () => dispatch(requestMessages()),
-//   requestChannels: () => dispatch(requestChannels()),
-//   receiveMessage: (message) => dispatch(receiveMessage(message)),
-//   deleteMessage: (message) => dispatch(deleteMessage(message)),
-//   receiveError: (message) => dispatch(receiveError(message))
-// });
 
 export default connect()(MainChat);

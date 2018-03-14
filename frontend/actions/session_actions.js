@@ -14,7 +14,6 @@ export const logIn = (params) => (dispatch) => (
 export const logOut = () => (dispatch) => (
   SessionUtils.destroySession().then(
     () => {
-      // App.messages.unsubscribe();
       App.cable.disconnect();
       dispatch(removeCurrentUser());
       dispatch(clearErrors());
