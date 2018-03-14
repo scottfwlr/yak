@@ -1,5 +1,6 @@
 import * as MessageApiUtil from 'util/message_api_util';
 import { idFromMessage } from 'reducers/selectors';
+import { receiveErrors } from 'actions/error_actions';
 
 
 export const requestMessages = () => (dispatch) => (
