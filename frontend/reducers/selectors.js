@@ -23,9 +23,9 @@ const dayOfMessage = (message) => {
   return date.toDateString().slice(0,-5);
 }
 
-export const messagesByDates = (messageData) => {
-  const messages = sortMessagesByCreation(Object.values(messageData));
-  const groupedMessages = groupBy(messages, dayOfMessage);
+export const messagesByDates = (messages) => {
+  const sortedMessages = sortMessagesByCreation(messages);
+  const groupedMessages = groupBy(sortedMessages, dayOfMessage);
   return Object.keys(groupedMessages).map(date => ({
     date,
     messageArray: groupedMessages[date]

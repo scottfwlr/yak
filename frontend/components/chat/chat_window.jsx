@@ -13,7 +13,6 @@ const ChatWindow = ({ messagesByDates }) => (
         />
     ))
   }
-  </div>
 );
 
 

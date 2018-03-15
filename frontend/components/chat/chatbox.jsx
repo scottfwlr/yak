@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const handleKeyDown = (channel) => (e) => {
   if (e.key === 'Enter' && !e.getModifierState('Shift')) {
@@ -8,11 +9,17 @@ const handleKeyDown = (channel) => (e) => {
   }
 }
 
-const ChatBox = ({ channel }) => (
+const ChatBox = ({ channel }) => (channel ? (
   <div className='chat-box-text-area chat-box-uncontrolled'
     contentEditable
-    onKeyDown={ handleKeyDown(channel) }>
+    onKeyDown={ handleKeyDown(channel.name) }>
   </div> 
-);
+) : null);
 
-export default ChatBox;
+
+const mapStateToProps = ({ entities: { channels } }, ownProps) => ({
+  channel: channels[ownProps.channelId]
+})
+
+
+export default connect(mapStateToProps)(ChatBox);
