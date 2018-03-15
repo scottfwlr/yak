@@ -8,11 +8,11 @@ const App = ({ store }) => {
   const loggedIn = store.getState().session.currentUser;
   return loggedIn ? (
     <div id='app'>
-      <ProtectedRoute path='/' exact  component={ MainChat } />
+      <ProtectedRoute path='/' exact component={ MainChat } />
     </div>
   ) : (
     <div id='app'>
-      <ProtectedRoute path='/' exact component= { SessionForm } />
+      <ProtectedRoute path='/' exact component={ SessionForm } />
       <SessionForm />
     </div>
   );

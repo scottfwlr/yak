@@ -1,8 +1,9 @@
 import React from 'react';
 
 // editMessage will be a lot of work
+// deleteMessage will be less but still a lot
 
-export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
+export const FirstMessage = ({ author, message }) => (
   <div className='chat-message first-message'>
     <div className='chat-message-aside-left'>
       <img className='profile-pic chat-message-profile-pic'
@@ -17,19 +18,11 @@ export const FirstMessage = ({ author, message, editMe, deleteMe }) => (
         <p className='chat-message-text'>{ message.text }</p>
     </div>
     <div className='chat-message-actions'>
-{/*      <p className='fake-link'
-        onClick={ editMe }>
-        edit
-      </p>*/}
-      <p className='fake-link'
-        onClick={ deleteMe }>
-        delete
-      </p>
     </div>
   </div>
 );
 
-export const Message = ({ message, editMe, deleteMe }) => (
+export const Message = ({ message }) => (
   <div className='chat-message'>
     <div className='chat-message-aside-left'>
       <a className='chat-message-timestamp'>{ message.timestamp }</a>
@@ -38,14 +31,6 @@ export const Message = ({ message, editMe, deleteMe }) => (
       <p className='chat-message-text'>{ message.text }</p>
     </div>
     <div className='chat-message-actions'>
-{/*      <p className='fake-link'
-        onClick={ editMe }>
-        edit
-      </p>*/}
-      <p className='fake-link'
-        onClick={ deleteMe }>
-        delete
-      </p>
     </div>
   </div>
 );

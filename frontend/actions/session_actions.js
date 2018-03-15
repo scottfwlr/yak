@@ -23,14 +23,20 @@ export const logOut = () => (dispatch) => (
   )
 );
 
-export const receiveCurrentUser = (currentUser) => ({
+export const receiveCurrentUser = (currentUserId) => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser
+  currentUserId
 });
 
 export const removeCurrentUser = () => ({
   type: REMOVE_CURRENT_USER
 });
 
+export const changeChannel = (currentChannelId) => ({
+  type: CHANGE_CHANNEL,
+  currentChannelId
+});
+
 export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const CHANGE_CHANNEL = 'CHANGE_CHANNEL';

@@ -4,19 +4,19 @@ import MessagesBox from 'chat/messages_box';
 import { messageRuns } from 'reducers/selectors';
 
 
-const ChatDay = ({ date, deleteMessage, allMessagesArray }) => (
+const ChatDay = ({ date, messageArray }) => (
   <div className='chat-day-container'>
     <DateLine date={ date } key={ date } />
-    {
-    messageRuns(allMessagesArray).map(([firstMessage, ...messages]) => (
+    { messageArray &&
+    messageRuns(messageArray).map(([firstMessage, ...messages]) => (
       <MessagesBox
         firstMessage={ firstMessage }
         messages={ messages }
         key={ firstMessage.id }
-        deleteMessage={ deleteMessage }
       />
     ))
     }
   </div>
 );
 
+export default ChatDay;

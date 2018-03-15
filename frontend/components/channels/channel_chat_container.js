@@ -1,25 +1,22 @@
 // channel_chat_container.js
-
+import React from 'react';
 import { connect } from 'react-redux';
 import { messagesByDates } from 'reducers/selectors';
 import ChatWindow from 'chat/chat_window';
 
-const ChannelChatContainer = ({ messagesByDates, channel, deleteMessage }) => (
+const ChannelChatContainer = ({ messages, channel }) => (
   <ChatWindow 
-    messagesByDates={ messagesByDates }
-    deleteMessage={ deleteMessage(channel) } />
+    messagesByDates={ messagesByDates(messages) }
+    />
 );
 
-const mapStateToProps = (state) => ({
-  messagesByDates: messagesByDates(state.entities.messages)
+
+
+const mapStateToProps = ({ entities: { messages } }, ownProps) => ({
+  messages: ownProps.channel.messages.map(id => messages[id])
 });
 
-const mapDispatchToProps = dispatch => ({
-  deleteMessage: (channel) => (id) => App.channels[channel].deleteMessage(id),
-  // editMessage: (channel) => (id) => (text) =>
-});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(ChannelChatContainer);

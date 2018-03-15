@@ -1,11 +1,12 @@
-const createChannelSubscriber = (dispatch, channel) => {
-  App.channels = {};
+const createCableSubscribers = (dispatch, channel) => {
+  // App.cable.subscriptions.create({ '' })
+
+  App.channels = App.channels || {};
 
   App.subscribeTo = (room) => {
-    App.channels[room] = 
-    App.cable.subscriptions.create({ channel, room }, {
-      connected: () => console.log('we connected'),
-      disconnected: () => console.log('we disconnected'),
+    App.channels[room] = App.cable.subscriptions.create({ channel, room }, {
+      connected: () => console.log(`we connected to ${channel}:${room}`),
+      disconnected: () => console.log(`we disconnected from ${channel}:${room}`),
       received: data => dispatch(JSON.parse(data)),
       newMessage: function(text) {
         return this.perform('new_message', { text });
@@ -27,4 +28,4 @@ const createChannelSubscriber = (dispatch, channel) => {
   }
 };
 
-export default createChannelSubscriber;
+export default createCableSubscribers;

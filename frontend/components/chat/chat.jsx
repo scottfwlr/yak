@@ -1,27 +1,32 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
-import createChannelSubscriber from 'util/action_cable_util';
-
-import ChatWindow from 'chat/chat_window';
-import ChatBox from 'chat/chatbox';
-
-// temporary?
+import createCableSubscribers from 'util/action_cable_util';
 import { requestChannels } from 'actions/channel_actions';
-// temporary
-import Header from 'header';
 
-const MainChat = ({ dispatch }) => {
-  createChannelSubscriber(dispatch, 'MessagesChannel');
-  App.subscribeTo('general');
-  dispatch(requestChannels());
-  return (
-    <main>
-      <Header />
-      <ChatWindow />
-      <ChatBox channel='general' />
-    </main>
-  );
-};
+import ChannelsIndexContainer from 'channels/channels_index_container';
+import Channel from 'channels/channel';
 
+
+class MainChat extends React.Component { 
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    createCableSubscribers(dispatch, 'MessagesChannel');
+    dispatch(requestChannels());
+  }
+
+  render() {
+    return (
+      <main>
+        <ChannelsIndexContainer />
+        <Channel />
+      </main>
+    );
+  }
+}
 
 export default connect()(MainChat);

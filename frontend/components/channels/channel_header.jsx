@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const ChannelHeader = ({ channel }) => (
+const ChannelHeader = ({ channelId }) => (
   <div className='channel-header'>
     <div className='channel-header-info'>
       <div></div>
