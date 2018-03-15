@@ -1,21 +1,20 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { ProtectedRoute } from 'util/route_util';
+import { connect } from 'react-redux';
 import MainChat from 'chat/chat';
 import SessionForm from 'session/session_form';
+import { HashRouter } from 'react-router-dom';
 
-const App = ({ store }) => {
-  const loggedIn = store.getState().session.currentUser;
-  return loggedIn ? (
-    <div id='app'>
-      <ProtectedRoute path='/' exact component={ MainChat } />
-    </div>
-  ) : (
-    <div id='app'>
-      <ProtectedRoute path='/' exact component={ SessionForm } />
-      <SessionForm />
-    </div>
-  );
-}
 
-export default withRouter(App);
+const App = ({ loggedIn }) => (
+  <div id='app'>
+    <HashRouter>
+      { loggedIn ? <MainChat /> : <SessionForm /> }
+    </HashRouter>
+  </div>
+);
+
+const mapStateToProps = ({ session: { currentUserId } }) => ({
+  loggedIn: Boolean(currentUserId)
+});
+
+export default connect(mapStateToProps)(App);

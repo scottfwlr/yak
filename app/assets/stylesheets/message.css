@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding: 5px 30px;
+  padding: 5px 25px;
 }
 
 .chat-message-aside-left {
@@ -31,7 +31,7 @@
 
 .chat-message-author-name {
   font-weight: bold;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .chat-message-timestamp {
@@ -54,7 +54,7 @@
 }
 
 .chat-message-text {
-  padding-left: 10px;
+  padding-left: 5px;
   white-space: pre-wrap;
 }
 
@@ -116,25 +116,3 @@
   display: none;
 }
 
-.chat-box-text-area,
-.chat-box-text-input {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  font-size: 16px;
-  padding: 10px;
-  border: 2px solid dimgray;
-  border-radius: 8px;
-  resize: none;
-  background-color: rgb(249,249,249);
-  outline: none;
-}
-
-.chat-box::placeholder {
-  color: silver;
-}
-
-.chat-box-uncontrolled {
-  max-height: 200px;
-  overflow-y: scroll;
-}

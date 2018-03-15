@@ -1,19 +1,80 @@
 .main-chat { 
   padding: 0px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  align-items: stretch;
   position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
+
+/* channels sidebar */
 
 .channels-index-container {
-
+  font-weight: lighter;
+  color: silver;
+  background-color: #4D394B;
+  width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
+.channels-settings {
+  height: 100px;
+}
+
+.channels-index {
+  overflow-y: scroll;
+}
+
+.channels-index-item:hover {
+  background-color: #3E313C;
+}
+
+
+/* chat window */
+
 .channel-chat {
-  
+  background-color: rgb(249,249,249);
+  width: calc(100% - 200px);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.channel-header {
+  height: 100px;
+  min-height: 100px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .chat-window {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.chat-box-text-area,
+.chat-box-text-input {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid dimgray;
+  border-radius: 8px;
+  resize: none;
   background-color: rgb(249,249,249);
-  margin-bottom: 40px;
+  outline: none;
+}
+
+.chat-box::placeholder {
+  color: silver;
+}
+
+.chat-box-uncontrolled {
+  max-height: 200px;
+  overflow-y: scroll;
+  margin: 20px;
+  margin-top: 0;
 }
