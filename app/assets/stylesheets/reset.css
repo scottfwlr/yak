@@ -1,21 +1,17 @@
-body, input, hr {
+body, input, hr, ul, p {
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style: none;
 }
 
 a {
   text-decoration: none;
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
-
-input:focus {
-  outline: none; 
-}
-
+input:focus,
 textarea:focus {
-  outline: none;
+  outline: none; 
 }

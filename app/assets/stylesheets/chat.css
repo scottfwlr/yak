@@ -1,0 +1,19 @@
+.main-chat { 
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+}
+
+.channels-index-container {
+
+}
+
+.channel-chat {
+  
+}
+
+.chat-window {
+  background-color: rgb(249,249,249);
+  margin-bottom: 40px;
+}

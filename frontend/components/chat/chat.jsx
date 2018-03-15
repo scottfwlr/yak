@@ -21,7 +21,7 @@ class MainChat extends React.Component {
 
   render() {
     return (
-      <main>
+      <main className='main-chat'>
         <ChannelsIndexContainer />
         <Channel />
       </main>

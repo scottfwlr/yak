@@ -12,7 +12,9 @@ const Channel = ({ currentChannelId }) => (
       <ChannelChat channelId={ currentChannelId }/>
       <ChatBox channelId={ currentChannelId } />
     </div>
-  ) : null
+  ) : (
+    <div className='channel-chat'></div>
+  )
 );
 
 const mapStateToProps = ({session: { currentChannelId } }) => ({

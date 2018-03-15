@@ -13,8 +13,7 @@
  *= require reset
  *= require defaults
  *
- *
- *
+ *= require chat
  *= require nav-header
  *= require credentials
  *= require message
