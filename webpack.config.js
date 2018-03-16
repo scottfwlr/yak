@@ -1,4 +1,6 @@
+const webpack = require('webpack');
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const config = {
   context: __dirname,
@@ -26,7 +28,10 @@ const config = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['tmp/*.*', 'log/*.*'], {exclude: ['.keep']})
+  ]
 };
 
 if (process.env.NODE_ENV !== 'production') {
