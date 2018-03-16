@@ -44,8 +44,7 @@ const ChannelHeader = ({ channel, logOut }) => (
       <ul className='channel-header-settings-post-search'>
         <li><i className="fas fa-at c-h-s-s-item"></i></li>
         <li><i className="far fa-star c-h-s-s-item"></i></li>
-        <li><i className="fas fa-sign-out-alt c-h-s-s-item"
-               onClick={ logOut }></i></li>
+        <li onClick={ logOut }><i className="fas fa-sign-out-alt c-h-s-s-item"></i></li>
         <li><i className="fas fa-ellipsis-v c-h-s-s-item"></i></li>
       </ul>
     </div>

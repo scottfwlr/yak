@@ -1,7 +1,17 @@
 // channels_settings.jsx
 import React from 'react';
+import { connect } from 'react-redux';
 
+const ChannelsSettings = ({ user }) => (
+  <div className='channels-settings'>
+    <p className='logged-in-user'>
+      { user.displayName }
+    </p>
+  </div>
+);
 
-const ChannelsSettings = () => (<div className='channels-settings'></div>);
+const mapStateToProps = ({ session: { currentUserId }, entities: { users } }) => ({
+  user: users[currentUserId]
+})
 
-export default ChannelsSettings;
+export default connect(mapStateToProps)(ChannelsSettings);

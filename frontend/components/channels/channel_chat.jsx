@@ -26,7 +26,10 @@ class ChannelChat extends React.Component {
   }
 
   render() {
-    const messagesByDate = messagesByDates(this.props.channel.messages.map(id => this.props.messages[id]));
+    const myMessages = this.props.channel.messages.map(id => this.props.messages[id]);
+
+    const messagesByDate = messagesByDates(myMessages.filter(el => Boolean(el)));
+    
     return (
       <div className='chat-window' id='chat-window'>
         {

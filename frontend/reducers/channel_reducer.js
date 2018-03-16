@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 import { RECEIVE_CHANNELS } from 'actions/channel_actions';
-import { RECEIVE_MESSAGE } from 'actions/message_actions';
+import { RECEIVE_MESSAGE, DELETE_MESSAGE } from 'actions/message_actions';
 
 const channelReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -12,6 +12,13 @@ const channelReducer = (state = {}, action) => {
       return merge({}, state, {
         [channelId]: { 
           messages: [...state[channelId].messages, id] 
+        }
+      });
+    case DELETE_MESSAGE:
+      const { id: delId, channelId: delChannelId } = action;
+      return merge({}, state, {
+        [delChannelId]: { 
+          messages: state[delChannelId].messages.filter(el => el !== delId)
         }
       });
     default:

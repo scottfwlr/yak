@@ -2,8 +2,8 @@ import React from 'react';
 
 // editMessage will be a lot of work
 
-const deleteMessage = (id) => {
-  const name = App.channelNameFromId[id];
+const deleteMessage = ({ channelId, id }) => {
+  const name = App.channelNameFromId[channelId];
   return () => App.channels[name].deleteMessage(id);
 };
 
@@ -20,12 +20,12 @@ const ChatMessage = ({ left, right, author, message, chatClass='' }) => (
       {right(author, message)}
     </div>
     <div className='chat-message-actions'>
-      <i className="far fa-edit chat-message-action-item c-m-a-i-edit"
-        onClick={ editMessage }>
-      </i>
-      <i className="far fa-times-circle chat-message-action-item c-m-a-i-delete"
-        onClick={ deleteMessage(message.id) }>
-      </i>
+      <div onClick={ editMessage }>
+        <i className="far fa-edit chat-message-action-item c-m-a-i-edit"></i>
+      </div>
+      <div onClick={ deleteMessage(message) }>
+        <i className="far fa-times-circle chat-message-action-item c-m-a-i-delete"></i>
+      </div>
     </div>
   </div>
 );

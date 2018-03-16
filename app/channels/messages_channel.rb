@@ -37,7 +37,8 @@ class MessagesChannel < ApplicationCable::Channel
     if message
       message.destroy!
       broadcast type: 'DELETE_MESSAGE',
-        id: message.id
+        id: message.id,
+        channelId: message.channel_id
     else
       broadcast type: 'RECEIVE_ERRORS',
         errors: ["You can only delete your own messages."]
