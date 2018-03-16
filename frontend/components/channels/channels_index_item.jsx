@@ -7,7 +7,7 @@ class ChannelsIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    App.subscribeTo(this.props.channel.name);
+    App.subscribeTo(this.props.channel);
   }
 
   render() {

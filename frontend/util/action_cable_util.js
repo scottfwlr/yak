@@ -3,11 +3,13 @@ const developmentSubscriber = (dispatch, channel) => {
   // App.cable.subscriptions.create({ '' })
 
   App.channels = App.channels || {};
+  App.channelNameFromId = App.channelNameFromId || {};
 
-  App.subscribeTo = (room) => {
-    App.channels[room] = App.cable.subscriptions.create({ channel, room }, {
-      connected: () => console.log(`we connected to ${channel}:${room}`),
-      disconnected: () => console.log(`we disconnected from ${channel}:${room}`),
+  App.subscribeTo = ({ name, id }) => {
+    
+    App.channels[name] = App.cable.subscriptions.create({ channel, room: name }, {
+      connected: () => console.log(`we connected to ${channel}:${name}`),
+      disconnected: () => console.log(`we disconnected from ${channel}:${name}`),
       received: data => dispatch(JSON.parse(data)),
       newMessage: function(text) {
         return this.perform('new_message', { text });
@@ -19,6 +21,8 @@ const developmentSubscriber = (dispatch, channel) => {
         return this.perform('delete_message', { id });
       }
     });
+
+    App.channelNameFromId[id] = name;
   };
 
   App.unsubscribeAll = () => {
@@ -26,6 +30,7 @@ const developmentSubscriber = (dispatch, channel) => {
       channel.unsubscribe();
     })
     App.channels = {};
+    App.channelNameFromId = {};
   }
 };
 
@@ -35,9 +40,11 @@ const productionSubscriber = (dispatch, channel) => {
   // App.cable.subscriptions.create({ '' })
 
   App.channels = App.channels || {};
+  App.channelNameFromId = App.channelNameFromId || {};
 
-  App.subscribeTo = (room) => {
-    App.channels[room] = App.cable.subscriptions.create({ channel, room }, {
+
+  App.subscribeTo = ({ name, id }) => {
+    App.channels[name] = App.cable.subscriptions.create({ channel, name }, {
       connected: () => {},
       disconnected: () => {},
       received: data => dispatch(JSON.parse(data)),
@@ -51,6 +58,8 @@ const productionSubscriber = (dispatch, channel) => {
         return this.perform('delete_message', { id });
       }
     });
+
+    App.channelNameFromId[id] = name;
   };
 
   App.unsubscribeAll = () => {
@@ -58,6 +67,7 @@ const productionSubscriber = (dispatch, channel) => {
       channel.unsubscribe();
     })
     App.channels = {};
+    App.channelNameFromId = {};
   }
 };
 

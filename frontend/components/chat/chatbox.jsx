@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const handleKeyDown = (channel) => (e) => {
   if (e.key === 'Enter' && !e.getModifierState('Shift')) {
+    
     e.preventDefault();
     // dispatch a state change to insert pendingMessage
     // pendingMessage should scroll too

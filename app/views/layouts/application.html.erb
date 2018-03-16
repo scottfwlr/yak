@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>Yak</title>
+
     <%= csrf_meta_tags %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Itim', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
 
     <% if logged_in? %>
       <script type="text/javascript">

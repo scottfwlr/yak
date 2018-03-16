@@ -2,8 +2,9 @@ import React from 'react';
 
 // editMessage will be a lot of work
 
-const deleteMessage = (id) => () => {
-  // App.channels[channel]
+const deleteMessage = (id) => {
+  const name = App.channelNameFromId[id];
+  return () => App.channels[name].deleteMessage(id);
 };
 
 const editMessage = () => {
@@ -19,14 +20,12 @@ const ChatMessage = ({ left, right, author, message, chatClass='' }) => (
       {right(author, message)}
     </div>
     <div className='chat-message-actions'>
-      <p className='fake-link' 
+      <i className="far fa-edit chat-message-action-item c-m-a-i-edit"
         onClick={ editMessage }>
-        edit
-      </p>
-      <p className='fake-link' 
-        onClick={ deleteMessage }>
-        delete
-      </p>
+      </i>
+      <i className="far fa-times-circle chat-message-action-item c-m-a-i-delete"
+        onClick={ deleteMessage(message.id) }>
+      </i>
     </div>
   </div>
 );
@@ -38,7 +37,7 @@ const firstMessageLeft = (author, message) => (
 );
 
 const firstMessageRight = (author, message) => (
-  <div>
+  <div className='first-message-content-right-container'>
     <span className='chat-message-byline'>
       <p className='chat-message-author-name'>{ author.displayName }</p>
       <a className='chat-message-timestamp'>{ message.timestamp }</a>
