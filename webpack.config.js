@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = {
+const config = {
   context: __dirname,
   entry: './frontend/yak.jsx',
   output: {
@@ -26,6 +26,12 @@ module.exports = {
         }
       }
     ]
-  },
-  devtool: 'source-map',
+  }
 };
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Building in development mode -- adding sourcemap');
+  config.devtool = 'source-map';
+}
+
+module.exports = config;
