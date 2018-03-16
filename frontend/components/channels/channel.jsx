@@ -17,7 +17,7 @@ const Channel = ({ currentChannelId }) => (
   )
 );
 
-const mapStateToProps = ({session: { currentChannelId } }) => ({
+const mapStateToProps = ({ session: { currentChannelId } }) => ({
   currentChannelId
 })
 

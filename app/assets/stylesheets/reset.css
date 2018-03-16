@@ -12,6 +12,7 @@ a {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+div:focus {
   outline: none; 
 }

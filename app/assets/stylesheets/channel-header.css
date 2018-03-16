@@ -1,0 +1,61 @@
+.channel-header {
+  height: 60px;
+  min-height: 60px;
+  border-bottom: 1px solid lightgray;
+  flex: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.channel-header-info {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.channel-header-title-box {
+  flex: auto;
+}
+
+.channel-header-title {
+
+}
+
+.channel-details-box {
+  flex: auto;
+}
+
+.channel-details {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.channel-details-item {
+  border-left: 1px lightgray;
+  padding: 3px;
+}
+
+.channel-details-item:first-child {
+  border-left: none;
+}
+
+.c-d-i-stars {
+
+}
+
+.c-d-i-members {
+  
+}
+
+.c-d-i-pins {
+  
+}
+
+.c-d-i-topic {
+  
+}
+
+.channel-details-settings-search {
+
+}
+

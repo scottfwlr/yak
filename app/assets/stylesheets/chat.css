@@ -22,13 +22,20 @@
 }
 
 .channels-settings {
-  height: 100px;
+  height: 60px;
 }
+
 
 .channels-index {
   overflow-y: scroll;
 }
 
+.channels-index-item {
+  padding: 4px 10px;
+
+}
+
+.channels-settings:hover,
 .channels-index-item:hover {
   background-color: #3E313C;
 }
@@ -41,14 +48,7 @@
   width: calc(100% - 200px);
   display: flex;
   flex-flow: column nowrap;
-}
-
-.channel-header {
-  height: 100px;
-  min-height: 100px;
-  border-bottom: 1px solid lightgray;
-  display: flex;
-  flex-flow: row nowrap;
+  justify-content: stretch;
 }
 
 .chat-window {
@@ -61,11 +61,13 @@
   width: 100%;
   font-size: 16px;
   padding: 10px;
+  margin: 20px;
+  margin-top: 0;
   border: 2px solid dimgray;
   border-radius: 8px;
   resize: none;
   background-color: rgb(249,249,249);
-  outline: none;
+  flex: none;
 }
 
 .chat-box::placeholder {
@@ -74,7 +76,6 @@
 
 .chat-box-uncontrolled {
   max-height: 200px;
+  outline: none;
   overflow-y: scroll;
-  margin: 20px;
-  margin-top: 0;
 }
