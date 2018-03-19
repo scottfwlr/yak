@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const ChannelsSettings = ({ user }) => (
   <div className='channels-settings'>
     <p className='logged-in-user'>
-      { user.displayName }
+      { user && user.displayName }
     </p>
   </div>
 );

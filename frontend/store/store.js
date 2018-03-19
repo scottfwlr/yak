@@ -26,6 +26,6 @@ const productionStore = (preloadedState = {}) => (
 
 
 
-const configureStore = (process.env.NODE_ENV !== 'production' ? developmentStore : productionStore)
+const configureStore = (process.env.NODE_ENV !== 'production' ? developmentStore : productionStore);
 
 export default configureStore;

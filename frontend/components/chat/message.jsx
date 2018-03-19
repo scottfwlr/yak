@@ -1,17 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // editMessage will be a lot of work
 
-const deleteMessage = ({ channelId, id }) => {
-  const name = App.channelNameFromId[channelId];
-  return () => App.channels[name].deleteMessage(id);
-};
+const deleteMessage = (channelName, messageId) => () => App.channels[channelName].deleteMessage(messageId);
 
 const editMessage = () => {
 
 };
 
-const ChatMessage = ({ left, right, author, message, chatClass='' }) => (
+const BareChatMessage = ({ left, right, author, message, chatClass='', channel }) => (
   <div className={`chat-message ${chatClass}`}>
     <div className='chat-message-aside-left'>
       {left(author, message)}
@@ -23,12 +21,27 @@ const ChatMessage = ({ left, right, author, message, chatClass='' }) => (
       <div onClick={ editMessage }>
         <i className="far fa-edit chat-message-action-item c-m-a-i-edit"></i>
       </div>
-      <div onClick={ deleteMessage(message) }>
+      <div onClick={ deleteMessage(channel.name, message.id) }>
         <i className="far fa-times-circle chat-message-action-item c-m-a-i-delete"></i>
       </div>
     </div>
   </div>
 );
+
+const mapStateToProps = ({ entities: { channels } }, { message: { channelId } }) => ({
+  channel: channels[channelId]
+});
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+const ChatMessage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BareChatMessage);
+
+
 
 const firstMessageLeft = (author, message) => (
   <img className='profile-pic chat-message-profile-pic'
