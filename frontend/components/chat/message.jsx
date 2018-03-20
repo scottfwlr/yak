@@ -44,13 +44,13 @@ const ChatMessage = connect(
 
 
 const firstMessageLeft = (author, message) => (
-  <img className='profile-pic chat-message-profile-pic'
+  author && <img className='profile-pic chat-message-profile-pic'
     src={ window.profilePicLookup[author.profilePicUrl] }
     alt={ author.fullName }/>
 );
 
 const firstMessageRight = (author, message) => (
-  <div className='first-message-content-right-container'>
+  author && <div className='first-message-content-right-container'>
     <span className='chat-message-byline'>
       <p className='chat-message-author-name'>{ author.displayName }</p>
       <a className='chat-message-timestamp'>{ message.timestamp }</a>
