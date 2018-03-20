@@ -28,10 +28,7 @@ const config = {
         }
       }
     ]
-  },
-  plugins: [
-    new CleanWebpackPlugin(['tmp/*.*', 'log/*.*'], {exclude: ['.keep']})
-  ]
+  }
 };
 
 if (process.env.NODE_ENV !== 'production') {
