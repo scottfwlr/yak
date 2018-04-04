@@ -46,7 +46,6 @@
 
 .channels-index-item.channel-selected,
 .channels-index-item.channel-selected:hover {
-  background-color: seagreen;
-  font-weight: 600;
+  background-color: #4C9689;
   color: white;
 }
