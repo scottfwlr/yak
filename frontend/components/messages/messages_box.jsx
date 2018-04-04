@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FirstMessage, Message } from 'chat/message';
+import { FirstMessage, Message } from 'messages/message';
 
 const deleteMessage = (message) => () => {
   App.channels[channel].deleteMessage(id)

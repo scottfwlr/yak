@@ -1,6 +1,6 @@
 import React from 'react';
 import DateLine from 'chat/date_line';
-import MessagesBox from 'chat/messages_box';
+import MessagesBox from 'messages/messages_box';
 import { messageRuns } from 'reducers/selectors';
 
 
