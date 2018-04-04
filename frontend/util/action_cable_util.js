@@ -1,7 +1,7 @@
 
 const createCableSubscribers = (dispatch, channel) => {
   
-  const production = process.env.NODE_ENV !== 'production';
+  const production = process.env.NODE_ENV === 'production';
 
   App.channels = App.channels || {};
 
