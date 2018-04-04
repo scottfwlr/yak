@@ -8,7 +8,7 @@ const ChannelHeader = ({ channel, logOut }) => (
     <div className='channel-header-info'>
       <div className='channel-header-title-box'>
         <p className='channel-header-title'>
-          # { channel.name }
+          &nbsp;{ channel.name }
         </p>
       </div>
       <div className='channel-details-box'>

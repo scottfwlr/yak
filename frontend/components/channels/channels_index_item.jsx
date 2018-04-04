@@ -20,7 +20,7 @@ class ChannelsIndexItem extends React.Component {
 
   render() {
     return (
-      <li className='channels-index-item'
+      <li className={`channels-index-item ${this.props.selected ? 'channel-selected' : ''}`}
         onClick={ this.changeChannel }>
         &nbsp;{ this.props.channel.name }
       </li>
@@ -28,12 +28,15 @@ class ChannelsIndexItem extends React.Component {
   }
 }
 
-
+const mapStateToProps = ({ session: { currentChannelId } }, ownProps) => ({
+  selected: currentChannelId === ownProps.channel.id
+})
 
 const mapDispatchToProps = dispatch => ({
   changeChannel: (id) => dispatch(changeChannel(id))
 })
 
 export default connect(
-  null, mapDispatchToProps
+  mapStateToProps, 
+  mapDispatchToProps
 )(ChannelsIndexItem);

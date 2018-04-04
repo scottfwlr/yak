@@ -41,5 +41,12 @@
 .channels-settings:hover,
 .channels-index-item:hover {
   background-color: #3E313C;
+  color: white;
 }
 
+.channels-index-item.channel-selected,
+.channels-index-item.channel-selected:hover {
+  background-color: seagreen;
+  font-weight: 600;
+  color: white;
+}
