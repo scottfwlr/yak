@@ -32,9 +32,9 @@ const ChannelHeader = ({ channel, logOut }) => (
     </div>
     <div className='channel-header-settings-search'>
       <ul className='channel-header-settings-pre-search'>
-        <li><i className="fas fa-phone c-h-s-s-item"></i></li>
-        <li><i className="fas fa-info-circle c-h-s-s-item"></i></li>
-        <li><i className="fas fa-cog c-h-s-s-item"></i></li>
+        {/*<li><i className="fas fa-phone c-h-s-s-item"></i></li>*/}
+        {/*<li><i className="fas fa-info-circle c-h-s-s-item"></i></li>*/}
+        {/*<li><i className="fas fa-cog c-h-s-s-item"></i></li>*/}
       </ul>
       <div className='channel-header-search-bar'>
         <i className="fas fa-search channel-header-search-bar-icon"></i>
@@ -42,8 +42,8 @@ const ChannelHeader = ({ channel, logOut }) => (
           type='text' />
       </div>
       <ul className='channel-header-settings-post-search'>
-        <li><i className="fas fa-at c-h-s-s-item"></i></li>
-        <li><i className="far fa-star c-h-s-s-item"></i></li>
+        {/*<li><i className="fas fa-at c-h-s-s-item"></i></li>*/}
+        {/*<li><i className="far fa-star c-h-s-s-item"></i></li>*/}
         <li onClick={ logOut }><i className="fas fa-sign-out-alt c-h-s-s-item"></i></li>
         <li><i className="fas fa-ellipsis-v c-h-s-s-item"></i></li>
       </ul>
