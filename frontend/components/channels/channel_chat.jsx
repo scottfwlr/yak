@@ -19,6 +19,8 @@ class ChannelChat extends React.Component {
     window.setTimeout(this.scrollToBottom, 5);
   }
 
+  filterMessage
+
   componentDidUpdate(prevProps) {
     if (prevProps.channelId !== this.props.channelId) {
       this.scrollToBottomTimeout();
@@ -26,14 +28,17 @@ class ChannelChat extends React.Component {
   }
 
   render() {
-    const myMessages = this.props.channel.messages.map(id => this.props.messages[id]);
 
-    const messagesByDate = messagesByDates(myMessages.filter(el => Boolean(el)));
+    const myMessages = this.props.channel.messages.map(id => {
+      return this.props.messages[id];
+    }).filter(el => {
+      return Boolean(el)
+    });
     
     return (
       <div className='chat-window' id='chat-window'>
         {
-          messagesByDate.map(({ date, messageArray }) => (
+          messagesByDates(myMessages).map(({ date, messageArray }) => (
             <ChatDay 
               key={ date } 
               date={ date }

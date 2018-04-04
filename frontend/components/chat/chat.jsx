@@ -29,4 +29,6 @@ class MainChat extends React.Component {
   }
 }
 
+
+
 export default connect()(MainChat);

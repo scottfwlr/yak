@@ -1,8 +1,6 @@
 // channels_index.jsx
 import React from 'react';
 import ChannelsIndexItem from 'channels/channels_index_item';
-import { connect } from 'react-redux';
-import { changeChannel } from 'actions/session_actions';
 
 const ChannelsIndex = ({ channels, changeChannel }) => (
   <div className='channels-container'>
@@ -12,7 +10,6 @@ const ChannelsIndex = ({ channels, changeChannel }) => (
         Object.values(channels).map(channel => (
           <ChannelsIndexItem 
             channel={ channel }
-            changeChannel={ changeChannel } 
             key={ channel.id }
           />
         ))
