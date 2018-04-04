@@ -16,7 +16,7 @@
     "webpack": "^3.11.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "webpack.config.js",
   "directories": {
     "test": "test"
@@ -28,8 +28,8 @@
     "webpack": "webpack --watch"
   },
   "engines": {
-    "node": "6.7.0",
-    "npm": "3.10.7"
+    "node": "8.11.1",
+    "npm": "5.6.0"
   },
   "repository": {
     "type": "git",

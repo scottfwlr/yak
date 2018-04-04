@@ -14,7 +14,7 @@ class ChannelsIndexItem extends React.Component {
     return (
       <li className='channels-index-item'
         onClick={ this.props.changeChannel(this.props.channel.id) }>
-        # { this.props.channel.name }
+        &nbsp;{ this.props.channel.name }
       </li>
     );
   }

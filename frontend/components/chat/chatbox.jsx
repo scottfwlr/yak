@@ -12,10 +12,21 @@ const handleKeyDown = (channel) => (e) => {
   }
 }
 
+const clearBreaks = (e) => {
+  // browsers tend to insert <br/> in contenteditables
+  // this clears them out when they're the only thing there
+  // allows our CSS "placeholder for contenteditable" to work
+  if (e.target.textContent === "") {
+    e.target.textContent = "";
+  }
+} 
+
 const ChatBox = ({ channel }) => (channel ? (
   <div className='chat-box-text-area'>
     <div className='chat-box-uncontrolled'
       contentEditable
+      placeholder='Type a message here...'
+      onBlur={ clearBreaks }
       onKeyDown={ handleKeyDown(channel.name) }>
     </div> 
   </div>

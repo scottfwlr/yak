@@ -1,0 +1,45 @@
+.channels-index-container {
+  font-weight: lighter;
+  color: silver;
+  background-color: #4D394B;
+  width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.channels-settings {
+  height: 60px;
+}
+
+
+.channels-container {
+
+}
+
+.channels-browser-modal {
+  padding-left: 10px;
+}
+
+.channels-index {
+  overflow-y: scroll;
+}
+
+.channels-index-item {
+  padding: 4px 10px;
+  padding-left: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.channels-index-item::before {
+  opacity: 0.7;
+  position: absolute;
+  left: 10px;
+  content: ' #';
+}
+
+.channels-settings:hover,
+.channels-index-item:hover {
+  background-color: #3E313C;
+}
+

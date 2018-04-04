@@ -14,6 +14,7 @@
  *= require defaults
  *
  *= require chat
+ *= require channel
  *= require channel-header
  *= require nav-header
  *= require credentials

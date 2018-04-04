@@ -10,37 +10,6 @@
   bottom: 0;
 }
 
-/* channels sidebar */
-
-.channels-index-container {
-  font-weight: lighter;
-  color: silver;
-  background-color: #4D394B;
-  width: 200px;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.channels-settings {
-  height: 60px;
-}
-
-
-.channels-index {
-  overflow-y: scroll;
-}
-
-.channels-index-item {
-  padding: 4px 10px;
-
-}
-
-.channels-settings:hover,
-.channels-index-item:hover {
-  background-color: #3E313C;
-}
-
-
 /* chat window */
 
 .channel-chat {
@@ -67,14 +36,24 @@
   resize: none;
   background-color: rgb(249,249,249);
   flex: none;
+  transition: border 0.2s;
 }
 
-.chat-box::placeholder {
-  color: silver;
+.chat-box-text-area:focus-within,
+.chat-box-text-input:focus-within {
+  border: 2px solid black;
+  transition: border 0.2s;
 }
 
 .chat-box-uncontrolled {
   max-height: 200px;
   outline: none;
   overflow-y: scroll;
+}
+
+
+/* https://codepen.io/flesler/pen/AEIFc */
+.chat-box-uncontrolled:not(:focus):empty::before {
+  content: attr(placeholder);
+  color: silver;
 }
