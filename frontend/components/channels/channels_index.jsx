@@ -2,7 +2,7 @@
 import React from 'react';
 import ChannelsIndexItem from 'channels/channels_index_item';
 
-const ChannelsIndex = ({ channels, changeChannel }) => (
+const ChannelsIndex = ({ channels }) => (
   <div className='channels-container'>
     <p className='channels-browser-modal'>Channels</p>
     <ul className='channels-index'>

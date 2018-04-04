@@ -15,14 +15,13 @@ class ChannelsIndexItem extends React.Component {
   }
 
   changeChannel(e) {
-    console.log(e.currentTarget);
     this.props.changeChannel(this.props.channel.id)
   }
 
   render() {
     return (
       <li className='channels-index-item'
-        onClick={ this.props.changeChannel(this.props.channel.id) }>
+        onClick={ this.changeChannel }>
         &nbsp;{ this.props.channel.name }
       </li>
     );
