@@ -5,7 +5,7 @@ const FirstMessageAside = ({ author }) => (
     { 
       author ? (
       <img className='profile-pic chat-message-profile-pic'
-        src={ window.profilePicLookup[author.profilePicUrl] }
+        src={ window.profilePicLookup[author.profilePicUrl] || window.profilePicLookup['/assets/stormtrooper.png'] }
         alt={ author.fullName }
         />
       ) : null

@@ -6,7 +6,9 @@ class CredentialsForm extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      fullName: '',
+      displayName: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -27,7 +29,9 @@ class CredentialsForm extends React.Component {
     this.props.submitCredentials(this.state);
     this.setState({
       email: '',
-      password: ''
+      password: '',
+      fullName: '',
+      displayName: ''
     });
   }
 
@@ -49,7 +53,7 @@ class CredentialsForm extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, fullName, displayName } = this.state;
     return (
       <form className='credentials-box credentials-form'
         onSubmit={ this.handleSubmit }>
@@ -66,6 +70,33 @@ class CredentialsForm extends React.Component {
             placeholder='password'
             value={ password }
             onChange={ this.updateField('password') } />
+
+          {
+            this.props.formType === 'Sign up' && Boolean(email) ? (
+              <input className='credentials-form-input input-name'
+                type='text'
+                placeholder='full name'
+                value={ fullName }
+                onChange={ this.updateField('fullName') } />
+            ) : (
+              null
+            )
+          }
+
+          {
+            this.props.formType === 'Sign up' && Boolean(email) ? (
+              <input className='credentials-form-input input-name'
+                type='text'
+                placeholder='username'
+                value={ displayName }
+                onChange={ this.updateField('displayName') } />
+            ) : (
+              null
+            )
+          }
+
+
+
 
           <input className='credentials-form-input credentials-form-submit'
             type='submit'
