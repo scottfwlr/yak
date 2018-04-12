@@ -1,7 +1,8 @@
 class Api::ChannelsController < ApplicationController
 
   def index
-    @channels = Channel.all.includes(:members, :messages)
+    # @channels = Channel.all.includes(:members, :messages)
+    @channels = current_user.channels.includes(:members, :messages)
   end
 
   def show

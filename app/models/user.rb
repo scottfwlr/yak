@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :channel_memberships
   has_many :channels, through: :channel_memberships
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_joined_general
 
 
 
@@ -43,6 +43,10 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def ensure_joined_general
+    self.channels << Channel.find_by(name: 'general')
   end
 
 end
