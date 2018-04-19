@@ -1,10 +1,17 @@
-export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
-  errors
+import { STATE_CHANGE, CLR, NEW } from 'actions/cable';
+
+export const receiveErrors = (error) => ({
+  type: STATE_CHANGE,
+  errors: [
+    { type: NEW, error }
+  ]
 });
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS
+  type: STATE_CHANGE,
+  errors: [
+    { type: CLR }
+  ]
 });
 
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';

@@ -16,9 +16,9 @@ const HeaderNav = ({ loggedIn, currentUser, logOut }) => {
       </div>
     )
 };
-const mapStateToProps = ({ session: { currentUserId }, entities: { users } }) => ({
-  loggedIn: Boolean(currentUserId),
-  currentUser: users[currentUserId]
+const mapStateToProps = ({ users, session: { currentUser } }) => ({
+  loggedIn: Boolean(currentUser),
+  currentUser: users[currentUser]
 });
 
 const mapDispatchToProps = dispatch => ({

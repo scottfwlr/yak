@@ -1,42 +1,43 @@
 import * as SessionUtils from 'util/session_api_util';
+import { STATE_CHANGE, CLR, NEW, SET } from 'actions/cable';
 import { receiveErrors, clearErrors } from 'actions/error_actions';
 
 export const logIn = (params) => (dispatch) => (
   SessionUtils.createSession(params).then(
-    (payload) => {
-      dispatch(receiveCurrentUser(payload));
-      dispatch(clearErrors());
+    (currentUser) => {
+      dispatch({ type: STATE_CHANGE,
+        session: { type: SET, currentUser },
+        errors: { type: CLR }
+      })
     },
-    (err) => dispatch(receiveErrors(err.responseJSON))
+    (err) => {
+      dispatch({ type: STATE_CHANGE,
+        errors: { type: SET, error: err.responseJSON }
+      })
+    }
   )
 );
 
 export const logOut = () => (dispatch) => (
   SessionUtils.destroySession().then(
     () => {
-      App.unsubscribeAll();
+      App.State.unsubscribe();
       App.cable.disconnect();
-      dispatch(removeCurrentUser());
-      dispatch(clearErrors());
+      dispatch({ type: STATE_CHANGE, 
+        session: { type: CLR },
+        errors: { type: CLR }
+      });
     },
-    (err) => dispatch(receiveErrors(err.responseJSON))
+    (err) => {
+      dispatch({ type: STATE_CHANGE,
+        errors: { type: NEW, error: err.responseJSON }
+      });
+    }
   )
 );
 
-export const receiveCurrentUser = (currentUserId) => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUserId
-});
 
-export const removeCurrentUser = () => ({
-  type: REMOVE_CURRENT_USER
+export const changeChannel = (currentChannel) => ({
+  type: STATE_CHANGE,
+  session: { type: SET, currentChannel }
 });
-
-export const changeChannel = (currentChannelId) => ({
-  type: CHANGE_CHANNEL,
-  currentChannelId
-});
-
-export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const CHANGE_CHANNEL = 'CHANGE_CHANNEL';

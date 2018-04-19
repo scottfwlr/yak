@@ -52,7 +52,7 @@ class ChannelChat extends React.Component {
 
 }
 
-const mapStateToProps = ({ entities: { channels, messages } }, { channelId }) => ({
+const mapStateToProps = ({ channels, messages }, { channelId }) => ({
   channel: channels[channelId],
   messages
 });

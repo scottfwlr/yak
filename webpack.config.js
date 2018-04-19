@@ -32,7 +32,7 @@ const config = {
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Building in development mode -- adding sourcemap');
-  config.devtool = 'source-map';
+  config.devtool = 'eval-source-map';
 }
 
 module.exports = config;

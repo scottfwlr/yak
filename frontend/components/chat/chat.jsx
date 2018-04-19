@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import createCableSubscribers from 'util/action_cable_util';
+import createCableSubscribers from 'util/action_cable_util_alt';
 import { requestChannels } from 'actions/channel_actions';
 
 import ChannelsIndexContainer from 'channels/channels_index_container';
@@ -15,7 +15,7 @@ class MainChat extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    createCableSubscribers(dispatch, 'MessagesChannel');
+    createCableSubscribers(dispatch);
     dispatch(requestChannels());
   }
 

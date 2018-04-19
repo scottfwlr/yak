@@ -5,7 +5,7 @@ const handleKeyDown = (channel) => (e) => {
   if (e.key === 'Enter' && !e.getModifierState('Shift')) {
     
     e.preventDefault();
-    // dispatch a state change to insert pendingMessage
+    // TODO: dispatch a state change to insert pendingMessage
     // pendingMessage should scroll too
     App.channels[channel].newMessage(e.target.innerText);
     e.target.innerText = "";
@@ -33,7 +33,7 @@ const ChatBox = ({ channel }) => (channel ? (
 ) : null);
 
 
-const mapStateToProps = ({ entities: { channels } }, ownProps) => ({
+const mapStateToProps = ({ channels }, ownProps) => ({
   channel: channels[ownProps.channelId]
 })
 

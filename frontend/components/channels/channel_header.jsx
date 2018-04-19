@@ -51,7 +51,7 @@ const ChannelHeader = ({ channel, logOut }) => (
   </div>
 );
 
-const mapStateToProps = ({ entities: { channels } }, { channelId }) => ({
+const mapStateToProps = ({ channels }, { channelId }) => ({
   channel: channels[channelId]
 });
 

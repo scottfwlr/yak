@@ -14,8 +14,8 @@ const ChannelsIndexContainer = ({ channel, channels }) => (
   </div>
 );
 
-const mapStateToProps = ({ entities: { channels }, session: { currentChannelId } }) => ({
-  channels, currentChannelId
+const mapStateToProps = ({ channels, session: { currentChannel } }) => ({
+  channels, currentChannel
 });
 
 

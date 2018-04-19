@@ -17,7 +17,7 @@ const BareMessageActions = ({ channel, messageId, editMessage, deleteMessage }) 
 };
 
 
-const mapStateToProps = ({ entities: { channels } }, ownProps) => ({
+const mapStateToProps = ({ channels }, ownProps) => ({
   channel: channels[ownProps.channelId]
 });
 

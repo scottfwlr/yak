@@ -17,7 +17,7 @@ const BareChatMessage = ({ message }) => (
 );
 
 
-const mapStateToProps = ({ entities: { messages } }, ownProps) => ({
+const mapStateToProps = ({ messages }, ownProps) => ({
   message: messages[ownProps.messageId]
 });
 

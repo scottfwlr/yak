@@ -13,8 +13,8 @@ const App = ({ loggedIn }) => (
   </div>
 );
 
-const mapStateToProps = ({ session: { currentUserId } }) => ({
-  loggedIn: Boolean(currentUserId)
+const mapStateToProps = ({ session: { currentUser } }) => ({
+  loggedIn: Boolean(currentUser)
 });
 
 export default connect(mapStateToProps)(App);

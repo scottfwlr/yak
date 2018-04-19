@@ -10,8 +10,8 @@ const ChannelsSettings = ({ user }) => (
   </div>
 );
 
-const mapStateToProps = ({ session: { currentUserId }, entities: { users } }) => ({
-  user: users[currentUserId]
+const mapStateToProps = ({ users, session: { currentUser } }) => ({
+  user: users[currentUser]
 })
 
 export default connect(mapStateToProps)(ChannelsSettings);

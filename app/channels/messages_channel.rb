@@ -1,7 +1,13 @@
 class MessagesChannel < ApplicationCable::Channel
 
   def subscribed
+    # stream_from current_channel.name, coder: ActiveSupport::JSON do |data|
+    #   data = JSON.parse(data)
+    #   debugger
+    #   transmit data.to_json
+    # end
     stream_from current_channel.name
+
   end
 
   def unsubscribed

@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def ensure_joined_general
-    self.channels << Channel.find_by(name: 'general')
+    self.channels << Channel.find_by(name: 'general') if self.channels.empty?
   end
 
 end

@@ -10,9 +10,9 @@ class ChannelsIndexItem extends React.Component {
     this.changeChannel = this.changeChannel.bind(this);
   }
 
-  componentDidMount() {
-    App.subscribeTo(this.props.channel.name);
-  }
+  // componentDidMount() {
+  //   App.subscribeTo(this.props.channel.name);
+  // }
 
   changeChannel(e) {
     this.props.changeChannel(this.props.channel.id)
@@ -28,8 +28,8 @@ class ChannelsIndexItem extends React.Component {
   }
 }
 
-const mapStateToProps = ({ session: { currentChannelId } }, ownProps) => ({
-  selected: currentChannelId === ownProps.channel.id
+const mapStateToProps = ({ session: { currentChannel } }, ownProps) => ({
+  selected: currentChannel === ownProps.channel.id
 })
 
 const mapDispatchToProps = dispatch => ({

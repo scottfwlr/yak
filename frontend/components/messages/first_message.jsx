@@ -16,7 +16,7 @@ const BareFirstMessage = ({ author, message }) => (
 );
 
 
-const mapStateToProps = ({ entities: { users, messages } }, ownProps) => ({
+const mapStateToProps = ({ users, messages }, ownProps) => ({
   author: users[ownProps.authorId],
   message: messages[ownProps.messageId]
 });
