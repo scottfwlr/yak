@@ -1,5 +1,7 @@
 html {
-  font-family: -apple-system, "SF", BlinkMacSystemFont, sans-serif;
+  font-family: 'Lato', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
