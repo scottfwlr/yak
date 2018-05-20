@@ -22,7 +22,7 @@ const mapStateToProps = ({ channels }, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteMessage: (channelName, messageId) => App.channels[channelName].deleteMessage(messageId),
+  deleteMessage: (channelName, messageId) => App.State.deleteMessage(messageId),
   editMessage: () => {}
 });
 

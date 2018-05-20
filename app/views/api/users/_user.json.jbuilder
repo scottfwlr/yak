@@ -1,10 +1,1 @@
-# `user` local variable
-json.set! user.id do
-  json.id user.id
-  json.email user.email
-  json.fullName user.full_name
-  json.displayName user.display_name
-  json.profilePicUrl user.profile_pic_url
-  json.description user.description
-end
- 
+json.extract! user, :id, :email, :full_name, :display_name, :profile_pic_url, :description

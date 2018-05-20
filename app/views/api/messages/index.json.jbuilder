@@ -1,3 +1,1 @@
-@messages.each do |message|
-  json.partial! 'message', message: message
-end
+json.partial! 'api/messages/messages', messages: @messages

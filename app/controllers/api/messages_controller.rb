@@ -5,6 +5,5 @@ class Api::MessagesController < ApplicationController
     @messages = Message.order(created_at: :desc)
   end
 
-  # create ?
 
 end

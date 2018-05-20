@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show, :index]
-    resource :session, only: [:create, :destroy]
     resources :messages, only: [:index]
     resources :channels, only: [:index, :show]
+    resource :session, only: [:create, :destroy]
+    get 'state' => 'state#index'
   end
 
   get '/', to: 'static_pages#root'

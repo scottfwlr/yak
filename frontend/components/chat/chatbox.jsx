@@ -7,7 +7,7 @@ const handleKeyDown = (channel) => (e) => {
     e.preventDefault();
     // TODO: dispatch a state change to insert pendingMessage
     // pendingMessage should scroll too
-    App.channels[channel].newMessage(e.target.innerText);
+    App.State.newMessage(e.target.innerText);
     e.target.innerText = "";
   }
 }
